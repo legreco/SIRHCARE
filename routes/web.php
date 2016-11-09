@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('employee/profile','EmployeeController@showProfile');
+Route::get('employee/profile','EmployeeController@showProfile');
 Route::resource('employees','EmployeeController');
 Route::post('leaveRequest/approve','LeaveRequestController@approve');
 Route::get('/home', 'HomeController@index');
