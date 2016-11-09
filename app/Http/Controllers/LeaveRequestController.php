@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Webpatser\Uuid\Uuid;
+use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreLeaveRequestRequest;
@@ -9,6 +10,7 @@ use App\LeaveRequest;
 use App\Approbation;
 use App\Http\Requests;
 use App\Employee;
+use App\Jobs\SendLeaveRequestSentEmail;
 use App\Events\LeaveRequestSubmitted;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +28,7 @@ class LeaveRequestController extends Controller
     
     public function index()
     {
-
+      
         $leaveRequests=LeaveRequest::all();
 
 
@@ -89,18 +91,21 @@ class LeaveRequestController extends Controller
 
         Auth::user()->employee->leave_requests()->save($leaveRequest);
 
-        event(new LeaveRequestSubmitted($leaveRequest));
+        Log::info("Request Cycle with Queues Begins");
+        $this->dispatch(new SendLeaveRequestSentEmail($leaveRequest));
+        Log::info("Request Cycle with Queues Ends");
+        //event(new LeaveRequestSubmitted($leaveRequest));
 
 
         $approbation=new Approbation();
         $approbation->confirmation_code=Uuid::generate()->string;
         $approbation->rejection_code=Uuid::generate()->string;
         $approbation->employee_id= Auth::user()->employee->employee->id;
+        $approbation->validationStepNumber=1;
         $leaveRequest->approbations()->save($approbation);
 
 
-        session()->flash('status', 'Votre demande a été soumise avec succès!!. Un email de confirmation vous a été
-        également envoyé à '. Auth::user()->email);
+        alert()->success('Vous avez ajouté un nouvel employé avec succès', 'Sauvegarde réussie');
 
         return redirect('/leaveRequest');
     }
@@ -123,11 +128,11 @@ class LeaveRequestController extends Controller
     public function approve(Request $request)
     {
         //
-
-        
-        
-
         $leaveRequest=LeaveRequest::Find($request->leave_request_id);
+
+        $approbation1=$leaveRequest->approbations->where('validationStepNumber','=',1)->first();
+
+
         return  $leaveRequest;
        /* if(($leaveRequest->mustPass2))
         {

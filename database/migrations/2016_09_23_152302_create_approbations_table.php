@@ -16,6 +16,7 @@ class CreateApprobationsTable extends Migration
             $table->increments('id');
             $table->uuid('approvable_id');
             $table->string('approvable_type');
+            $table->unsignedInteger('validationStepNumber');
             $table->uuid('employee_id');
             $table->uuid('confirmation_code');
             $table->uuid('rejection_code');

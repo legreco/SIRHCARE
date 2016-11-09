@@ -11,3 +11,4 @@
       page. However, you can choose any other skin. Make sure you        apply the skin class to the body tag so the changes take effect.
 -->
 <link href="{{ asset("/bower_components/AdminLTE/dist/css/skins/_all-skins.css")}}" rel="stylesheet" type="text/css" />
+<link href="{{ asset("/bower_components/sweetalert/dist/sweetalert.css")}}" rel="stylesheet" type="text/css" />

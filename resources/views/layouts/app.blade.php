@@ -43,6 +43,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </div><!-- ./wrapper -->
 
 @include('includes.js.basicJs')
+@include('sweet::alert')
 @yield('script')
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.

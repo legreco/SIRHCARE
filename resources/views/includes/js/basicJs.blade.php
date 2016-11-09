@@ -6,3 +6,4 @@
 <script src="{{ asset ("/bower_components/AdminLTE/bootstrap/js/bootstrap.min.js") }}" type="text/javascript"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset ("/bower_components/AdminLTE/dist/js/app.min.js") }}" type="text/javascript"></script>
+<script src="{{asset("/bower_components/sweetalert/dist/sweetalert.min.js") }}" type="text/javascript"></script>

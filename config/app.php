@@ -180,6 +180,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
 
     ],
 
@@ -231,6 +232,7 @@ return [
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'JsValidator' => Proengsoft\JsValidation\Facades\JsValidatorFacade::class,
         'Uuid' => Webpatser\Uuid\Uuid::class,
+        'Alert' => UxWeb\SweetAlert\SweetAlert::class,
 
     ],
 
