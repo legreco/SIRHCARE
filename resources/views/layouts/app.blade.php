@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>SIRHCARE WEB</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    @include('includes.css.basicCss')
+    @yield('css')
+</head>
+<body class="hold-transition skin-blue">
+<div class="wrapper">
+
+    <!-- Main Header -->
+   @include('layouts.header')
+    <!-- Left side column. contains the logo and sidebar -->
+   @include('layouts.sidebar')
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+
+            @yield('content-header')
+
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- Your Page Content Here -->
+            @yield('content')
+
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+
+    <!-- Main Footer -->
+  @include('layouts.footer')
+
+</div><!-- ./wrapper -->
+
+@include('includes.js.basicJs')
+@yield('script')
+
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+      Both of these plugins are recommended to enhance the
+      user experience -->
+
+<script>
+    if (Boolean(sessionStorage.getItem("sidebar-toggle-collapsed"))) {
+        $("body").removeClass('sidebar-collapse')
+    }
+    else
+    {
+        $("body").addClass('sidebar-collapse')
+    }
+
+    $('.sidebar-toggle').click(function() {
+        event.preventDefault();
+        if (Boolean(sessionStorage.getItem("sidebar-toggle-collapsed"))) {
+            sessionStorage.setItem("sidebar-toggle-collapsed", "");
+        } else {
+            sessionStorage.setItem("sidebar-toggle-collapsed", "1");
+        }
+    });
+
+
+</script>
+</body>
+</html>
