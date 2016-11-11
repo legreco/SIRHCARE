@@ -12,3 +12,4 @@
 -->
 <link href="{{ asset("/bower_components/AdminLTE/dist/css/skins/_all-skins.css")}}" rel="stylesheet" type="text/css" />
 <link href="{{ asset("/bower_components/sweetalert/dist/sweetalert.css")}}" rel="stylesheet" type="text/css" />
+<link href="{{ asset("/bower_components/toastr/toastr.css")}}" rel="stylesheet" type="text/css" />

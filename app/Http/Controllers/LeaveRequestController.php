@@ -91,10 +91,7 @@ class LeaveRequestController extends Controller
 
         Auth::user()->employee->leave_requests()->save($leaveRequest);
 
-        Log::info("Request Cycle with Queues Begins");
-        $this->dispatch(new SendLeaveRequestSentEmail($leaveRequest));
-        Log::info("Request Cycle with Queues Ends");
-        //event(new LeaveRequestSubmitted($leaveRequest));
+        event(new LeaveRequestSubmitted($leaveRequest));
 
 
         $approbation=new Approbation();

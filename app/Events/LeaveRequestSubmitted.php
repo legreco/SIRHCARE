@@ -4,12 +4,12 @@ namespace App\Events;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use App\LeaveRequest;
-class LeaveRequestSubmitted
+
+
+class LeaveRequestSubmitted implements ShouldBroadcast
 {
     use InteractsWithSockets, SerializesModels;
     public $leaveRequest;
@@ -32,6 +32,6 @@ class LeaveRequestSubmitted
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('channel-name');
+        return new Channel('test');
     }
 }
