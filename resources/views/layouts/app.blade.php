@@ -9,6 +9,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>SIRHCARE WEB</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+
+    <script>
+        window.Laravel = <?php echo json_encode([
+                'csrfToken' => csrf_token(),
+        ]); ?>
+    </script>
     @include('includes.css.basicCss')
     @yield('css')
 </head>
@@ -40,9 +46,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Main Footer -->
   @include('layouts.footer')
-
+    @include('layouts.control_sidebar')
 </div><!-- ./wrapper -->
-
+<script>
+    var userId="{{Auth::user()->id}}";
+    var audio =new Audio('{{asset("sounds/notification.mp3")}}');
+</script>
 @include('includes.js.basicJs')
 @include('sweet::alert')
 @yield('script')
@@ -51,11 +60,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
       Both of these plugins are recommended to enhance the
       user experience -->
 
+
 <script>
 
 
+    $('#scroll').slimscroll({
+        height:'500px'
 
-    toastr.info('Are you the 6 fingered man?')
+    });
+
+
     if (Boolean(sessionStorage.getItem("sidebar-toggle-collapsed"))) {
         $("body").removeClass('sidebar-collapse')
     }

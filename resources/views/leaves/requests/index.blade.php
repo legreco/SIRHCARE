@@ -63,7 +63,11 @@
                 </table>
 
             </div><!-- /.box-body -->
+            <div class="box-footer">
+                {{ $leaveRequests->links() }}
+            </div>
         </div><!-- /.box -->
+
     </div><!-- /.col -->
     <div class='col-md-1'>
     </div>

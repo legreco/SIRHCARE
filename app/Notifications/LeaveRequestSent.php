@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Notifications;
-
+use Illuminate\Support\Facades\URL;
 use App\LeaveRequest;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
@@ -61,6 +61,9 @@ class LeaveRequestSent extends Notification implements ShouldQueue
         return [
             //
             'leave_request_id' => $this->leaveRequest->id,
+            'url'=> 'leaveRequest/'.$this->leaveRequest->id,
+            'notifiable_name'=>$this->leaveRequest->employee->fullName,
+            'type'=>'DEMANDE DE CONGÉ',
         ];
     }
 }

@@ -150,7 +150,14 @@
 
                             </div>
                         </li>
+
                     </ul>
+                </li>
+                <li>
+                    <a href="#" data-toggle="control-sidebar">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="label label-warning">{{count(Auth::user()->notifications)}}</span>
+                    </a>
                 </li>
             </ul>
         </div>

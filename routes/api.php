@@ -20,3 +20,5 @@ Route::get('/user', function (Request $request) {
 Route::get('permissions','PermissionApiController@index');
 Route::get('roles','RoleApiController@index');
 Route::get('leave_types','LeaveTypeApiController@index');
+Route::resource('notifications','NotificationApiController');
+Route::get('user/{id}/notifications','NotificationApiController@getUserNotifications');

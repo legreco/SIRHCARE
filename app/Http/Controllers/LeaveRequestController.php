@@ -28,8 +28,9 @@ class LeaveRequestController extends Controller
     
     public function index()
     {
-      
-        $leaveRequests=LeaveRequest::all();
+       
+
+        $leaveRequests=LeaveRequest::orderBy('created_at','desc')->paginate(10);
 
 
         return view('leaves.requests.index',compact('leaveRequests'));

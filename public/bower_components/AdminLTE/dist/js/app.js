@@ -205,7 +205,6 @@ $(function () {
       box.toggleClass('direct-chat-contacts-open');
     });
   }
-
   /*
    * INITIALIZE BUTTON TOGGLE
    * ------------------------
