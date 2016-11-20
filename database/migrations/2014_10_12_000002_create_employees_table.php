@@ -13,7 +13,7 @@ class CreateEmployeesTable extends Migration
     public function up()
     {
         Schema::create('employees', function (Blueprint $table) {
-            $table->uuid('id');
+            $table->uuid('id')->primary();
             $table->string('employeeId',10)->unique();
             $table->string('categoryId',10)->unique();
             $table->string('firstName');
@@ -24,9 +24,14 @@ class CreateEmployeesTable extends Migration
             $table->date('birthDate');
             $table->string('email');
             $table->date('hireDate');
+            $table->decimal('salary',10,2)->unsigned();
+            $table->date('contractEnd');
+            $table->string('job');
+            $table->string('location');
+            $table->string('departement');
             $table->timestamps();
             
-            $table->primary('id');
+          
             $table->foreign('gender_id')->references('id')->on('genders')->onDelete('cascade');
             $table->foreign('employee_sup_id')->references('id')->on('employees')->onDelete('cascade');
         });

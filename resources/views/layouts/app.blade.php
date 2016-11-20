@@ -51,6 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script>
     var userId="{{Auth::user()->id}}";
     var audio =new Audio('{{asset("sounds/notification.mp3")}}');
+    var appUrl="{{env('APP_URL')}}";
 </script>
 @include('includes.js.basicJs')
 @include('sweet::alert')

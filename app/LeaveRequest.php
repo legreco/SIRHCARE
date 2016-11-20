@@ -18,6 +18,8 @@ class LeaveRequest extends Model
         'address',
         'telephone'
     ];
+    
+    protected $dates=['created_at'];
 
     public function employee()
     {

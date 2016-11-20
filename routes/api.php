@@ -22,3 +22,5 @@ Route::get('roles','RoleApiController@index');
 Route::get('leave_types','LeaveTypeApiController@index');
 Route::resource('notifications','NotificationApiController');
 Route::get('user/{id}/notifications','NotificationApiController@getUserNotifications');
+Route::resource('employees','Api\EmployeeController');
+Route::resource('currencies','Api\CurrencyController');

@@ -22,7 +22,9 @@
                             <th>CATEGORIE</th>
                             <th>SEXE</th>
                             <th>POSTE</th>
+                            <th>SALAIRE (USD)</th>
                             <th>DEPARTEMENT</th>
+                            <th>LOCALISATION</th>
                            {{-- <th>POSTE</th>
                             <th>DEPARTEMENT</th>
                             <th>SALAIRE</th>--}}
@@ -45,6 +47,19 @@
                                 </td>
                                 <td>
                                     {{$employee->sex}}
+                                </td>
+
+                                <td>
+                                    {{$employee->job}}
+                                </td>
+                                <td>
+                                    {{$employee->salary}}
+                                </td>
+                                <td>
+                                    {{$employee->departement}}
+                                </td>
+                                <td>
+                                    {{$employee->location}}
                                 </td>
                             {{--    <td>
                                     {{$employee->contract->job->departement}}
@@ -72,6 +87,9 @@
                     </table>
 
                 </div><!-- /.box-body -->
+                <div class="box-footer">
+                    {{$employees->links()}}
+                </div>
             </div><!-- /.box -->
         </div><!-- /.col -->
         <div class='col-md-2'>

@@ -60,10 +60,22 @@ class LeaveRequestSent extends Notification implements ShouldQueue
     {
         return [
             //
-            'leave_request_id' => $this->leaveRequest->id,
-            'url'=> 'leaveRequest/'.$this->leaveRequest->id,
-            'notifiable_name'=>$this->leaveRequest->employee->fullName,
-            'type'=>'DEMANDE DE CONGÉ',
+            'category'=>'DEMANDE DE CONGÉ',
+            'route'=> '\/leaveRequest/'.$this->leaveRequest->id,
+            'trigger_name'=>$this->leaveRequest->employee->fullName,
+            'created_at'=>$this->leaveRequest->created_at,
         ];
     }
+
+    public function toBroadcast($notifiable)
+    {
+        return [
+            //
+            'category'=>'DEMANDE DE CONGÉ',
+            'route'=> '\/leaveRequest/'.$this->leaveRequest->id,
+            'trigger_name'=>$this->leaveRequest->employee->fullName,
+            'created_at'=>$this->leaveRequest->created_at,
+        ];
+    }
+   
 }

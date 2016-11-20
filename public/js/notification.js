@@ -1,15 +1,7 @@
 /**
  * Created by MarcGrecoPeralte on 11/10/2016.
  */
-Echo.private('App.User.' + userId)
-    .notification((notification) => {
-        notifyUser(notification)
 
-
-
-
-
-    });
 
 toastr.options = {
     "closeButton": false,
@@ -28,28 +20,28 @@ toastr.options = {
     "showMethod": "fadeIn",
     "hideMethod": "fadeOut"
 }
-function notifyUser(notification) {
-    toastr["info"](JSON.stringify(notification));
-    audio.play();
-}
+
 
 var notification_panel =new Vue({
     
     el:'#notifications',
     data:{
         notifications:[
-
         ],
-
         notification:{
-          data:{}
         }
+    },
+
+    computed:{
+
 
     },
 
     mounted: function(){
+        this.listen();
 
         this.getNotifications();
+
 
 
     },
@@ -60,14 +52,54 @@ var notification_panel =new Vue({
 
             this.$http.get('/api/user/'+userId+'/notifications').then((response) => {
 
-         this.notifications=response.data;
+       //  this.notifications=response.data;
 
-                alert('done');
+                    this.notifications = response.data.map(({ data}) => {
+                        return {
+                            category: data.category,
+                            route: data.route,
+                            trigger_name: data.trigger_name,
+                            created_at: data.created_at
+                        };
+                    });
             });
 
 
         },
 
+        addNotification: function(notification){
+            this.notifications.add(notification);
+            notifyUser(notification);
+
+            },
+
+
+      notifyUser: function(notification) {
+        toastr["info"](JSON.stringify(notification));
+        audio.play();
+        },
+
+        notification_url: function (notification_route)
+        {
+            return appUrl.concat(notification_route);
+        },
+
+        listen: function () {
+            Echo.private('App.User.' + userId)
+                .notification((notification) => {
+                    this.notifications.unshift(notification);
+                    toastr["info"](JSON.stringify(notification));
+                    audio.play();
+                });
+        }
+
+    },
+
+
+    filters:{
+        time_ago: function (value) {
+           return moment(value).fromNow();
+        }
     }
 
 });

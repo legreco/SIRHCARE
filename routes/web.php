@@ -18,7 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('employee/profile','EmployeeController@showProfile');
 Route::get('employee/profile','EmployeeController@showProfile');
-Route::resource('employees','EmployeeController');
+Route::resource('employees','Web\EmployeeController');
 Route::post('leaveRequest/approve','LeaveRequestController@approve');
 Route::get('/home', 'HomeController@index');
 Route::get('/', 'HomeController@index');
@@ -44,6 +44,7 @@ Route::get('/test', function()
 
 });
 
+Route::get('/currencies','Web\CurrencyController@index');
 /*\Event::listen('Illuminate\Database\Events\QueryExecuted', function ($query) {
     var_dump($query->sql);
     var_dump($query->bindings);

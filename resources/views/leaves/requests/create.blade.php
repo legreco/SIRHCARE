@@ -7,7 +7,6 @@
     <link href="{{ asset("/bower_components/AdminLTE/plugins/select2/select2.css")}}" rel="stylesheet" type="text/css" />
 <div class="row">
     <div class="col-md-3">
-        <a href="compose.html" class="btn btn-primary btn-block margin-bottom">Compose</a>
 
         <div class="box box-solid">
             <div class="box-header with-border">

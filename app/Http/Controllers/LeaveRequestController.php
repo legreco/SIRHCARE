@@ -55,9 +55,9 @@ class LeaveRequestController extends Controller
     {
 
 
-        $leaveRequests=Auth::user()->employee->leave_requests()->orderBy('created_at','desc')->get();
+        $leaveRequests=Auth::user()->employee->leave_requests()->orderBy('created_at','desc')->paginate(10);
 
-        return view('leaves.requests.index',compact('leaveRequests',$leaveRequests));//
+        return view('leaves.requests.self',compact('leaveRequests',$leaveRequests));//
     }
 
     /**

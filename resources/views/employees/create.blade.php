@@ -281,9 +281,6 @@
 @section('script')
     @include('includes.js.datepicker3')
     @include('includes.js.select2')
-    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-    {!! JsValidator::formRequest('App\Http\Requests\StoreDepartementRequest','#my-form') !!}
-
 
     <script>
 

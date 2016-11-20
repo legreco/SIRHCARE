@@ -13,13 +13,13 @@
             <ul class="control-sidebar-menu">
 
                 <li  v-for="notification in notifications">
-                    <a :href="notification.data.url">
+                    <a :href="notification_url(notification.route)">
                         <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
 
                         <div class="menu-info">
-                            <h4 class="control-sidebar-subheading">@{{notification.type }}</h4>
-
-                            <p>@{{notification.created_at}}</p>
+                            <h4 class="control-sidebar-subheading">@{{notification.category}}</h4>
+                            <p>@{{notification.trigger_name}}</p>
+                            <p>@{{notification.created_at.date | time_ago}}</p>
                         </div>
                     </a>
                 </li>

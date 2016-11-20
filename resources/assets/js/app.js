@@ -15,4 +15,4 @@ require('./bootstrap');
 
 Vue.component('example', require('./components/Example.vue'));
 
-//Vue.component('chat', require('./components/test.js'));  
+

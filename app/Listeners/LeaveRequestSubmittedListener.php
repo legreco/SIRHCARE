@@ -37,7 +37,7 @@ class LeaveRequestSubmittedListener
         dispatch($job);
         Log::info("Request Cycle with Queues Ends");*/
         //
-       // dispatch(new SendLeaveRequestSentEmail($event->leaveRequest));
+        dispatch(new SendLeaveRequestSentEmail($event->leaveRequest));
       
         Notification::send(Auth::user()->employee->employee->user,new \App\Notifications\LeaveRequestSent($event->leaveRequest));
         

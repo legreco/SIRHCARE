@@ -7,5 +7,6 @@
     <ul class="treeview-menu">
         <li><a href="{{ url('/employees/create') }}"><i class="fa fa-circle-o"></i>Nouvel employé</a></li>
         <li><a href="{{ url('/employees') }}"><i class="fa fa-circle-o"></i>Liste des employés</a></li>
+        <li><a href="{{ url('/employees') }}"><i class="fa fa-circle-o"></i>Gestion des contrats</a></li>
     </ul>
 </li>

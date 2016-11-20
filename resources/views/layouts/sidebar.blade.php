@@ -46,7 +46,7 @@
                 </ul>
             </li>
 
-           @include('layouts.sidebar_menus.employee_mangagement')
+           @include('layouts.sidebar_menus.employee_management')
 
             <li class="treeview ">
                 <a href="#">
@@ -118,6 +118,19 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{url('/office')}}"><i class="fa fa-circle-o"></i>Liste des bureaux</a></li>
+                    <li><a href="{{url('/resource')}}"><i class="fa fa-circle-o"></i>Liste des départements</a></li>
+                    <li><a href="{{url('/permission')}}"><i class="fa fa-circle-o"></i>Permissions</a></li>
+                    <li><a href="{{url('/role')}}"><i class="fa fa-circle-o"></i>Rôles</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-home"></i> <span>Bureaux de CARE</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{url('/currencies')}}"><i class="fa fa-circle-o"></i>Monnaies</a></li>
                     <li><a href="{{url('/resource')}}"><i class="fa fa-circle-o"></i>Liste des départements</a></li>
                     <li><a href="{{url('/permission')}}"><i class="fa fa-circle-o"></i>Permissions</a></li>
                     <li><a href="{{url('/role')}}"><i class="fa fa-circle-o"></i>Rôles</a></li>
