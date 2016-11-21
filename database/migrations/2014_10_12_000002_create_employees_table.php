@@ -14,26 +14,24 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->unsignedInteger('title_id');
             $table->string('employeeId',10)->unique();
             $table->string('categoryId',10)->unique();
             $table->string('firstName');
             $table->string('lastName');
+            $table->unsignedInteger('country_id');
             $table->unsignedInteger('gender_id');
             $table->uuid('employee_sup_id')->nullable();
             $table->string('cinOrNif');
             $table->date('birthDate');
             $table->string('email');
             $table->date('hireDate');
-            $table->decimal('salary',10,2)->unsigned();
-            $table->date('contractEnd');
-            $table->string('job');
-            $table->string('location');
-            $table->string('departement');
             $table->timestamps();
-            
-          
-            $table->foreign('gender_id')->references('id')->on('genders')->onDelete('cascade');
-            $table->foreign('employee_sup_id')->references('id')->on('employees')->onDelete('cascade');
+
+            $table->foreign('title_id')->references('id')->on('titles')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('gender_id')->references('id')->on('genders')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('employee_sup_id')->references('id')->on('employees')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('employee_sup_id')->references('id')->on('employees')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

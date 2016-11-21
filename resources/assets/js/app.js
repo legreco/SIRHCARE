@@ -15,4 +15,5 @@ require('./bootstrap');
 
 Vue.component('example', require('./components/Example.vue'));
 
-
+Vue.component('v-select-countries', require('./components/test.vue'));
+Vue.component('v-select', VueSelect.VueSelect);
