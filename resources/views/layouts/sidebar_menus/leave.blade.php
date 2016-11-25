@@ -19,6 +19,7 @@
         </li>
         @endif
         <li><a href="{{ url('/leave/accounts') }}"><i class="fa fa-circle-o"></i> Mes comptes congés</a></li>
+        <li><a href="{{ url('/holiday_lists/create') }}"><i class="fa fa-circle-o"></i> Liste des jours fériés</a></li>
     </ul>
 </li>
 

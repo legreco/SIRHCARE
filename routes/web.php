@@ -16,6 +16,12 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::resource('pars','Web\ParController');
+Route::resource('funds','Web\FundController');
+Route::resource('holiday_lists','Web\HolidayListController');
+Route::get('image','Web\ImagesController@getImage');
+Route::resource('positions','Web\PositionController');
+Route::resource('openings','Web\OpeningController');
 Route::get('employee/profile','EmployeeController@showProfile');
 Route::get('employee/profile','EmployeeController@showProfile');
 Route::resource('employees','Web\EmployeeController');

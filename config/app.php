@@ -166,6 +166,7 @@ return [
         OwenIt\Auditing\AuditingServiceProvider::class,
         Proengsoft\JsValidation\JsValidationServiceProvider::class,
         Snowfire\Beautymail\BeautymailServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -233,6 +234,7 @@ return [
         'JsValidator' => Proengsoft\JsValidation\Facades\JsValidatorFacade::class,
         'Uuid' => Webpatser\Uuid\Uuid::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

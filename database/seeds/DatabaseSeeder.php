@@ -13,6 +13,8 @@ class DatabaseSeeder extends Seeder
     {
 
         // Basics Tables
+       // $this->call(MonthsTableSeeder::class);
+        $this->call(CountriesTableSeeder::class);
         $this->call(TitlesTableSeeder::class);
          $this->call(GendersTableSeeder::class);
         $this->call(CurrenciesTableSeeder::class);
@@ -20,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(LocationsTableSeeder::class);
         $this->call(PositionStatusesTableSeeder::class);
         $this->call(ResourcesTableSeeder::class);
+        $this->call(OpeningStatusesTableSeeder::class);
        
         $this->call(EmployeesTableSeeder::class);
         $this->call(UsersTableSeeder::class);

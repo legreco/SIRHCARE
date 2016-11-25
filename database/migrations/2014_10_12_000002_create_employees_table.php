@@ -15,6 +15,7 @@ class CreateEmployeesTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->unsignedInteger('title_id');
+            $table->string('profile_picture')->nullable();
             $table->string('employeeId',10)->unique();
             $table->string('categoryId',10)->unique();
             $table->string('firstName');
@@ -24,15 +25,20 @@ class CreateEmployeesTable extends Migration
             $table->uuid('employee_sup_id')->nullable();
             $table->string('cinOrNif');
             $table->date('birthDate');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->date('hireDate');
             $table->timestamps();
 
+          
+        });
+
+        Schema::table('employees', function (Blueprint $table) {
             $table->foreign('title_id')->references('id')->on('titles')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('gender_id')->references('id')->on('genders')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('employee_sup_id')->references('id')->on('employees')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('employee_sup_id')->references('id')->on('employees')->onDelete('cascade')->onUpdate('cascade');
-        });
+            });
+        
     }
 
     /**

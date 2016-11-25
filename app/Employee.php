@@ -10,13 +10,18 @@ class Employee extends Model
     use UuidTrait;
     public $incrementing = false;
     protected $fillable=['firstName','lastName','employeeId','categoryId','gender_id','employee_id','cinOrNif','birthDate','email'];
-   protected $appends = ['age','fullName','sex'];
-protected $hidden=['gender'];
+   protected $appends = ['titleName','age','fullName','sex'];
+protected $hidden=['title','gender'];
 
 
     public function getFullNameAttribute()
     {
         return $this->firstName." ".mb_strtoupper($this->lastName);
+    }
+
+    public function getTitleNameAttribute()
+    {
+        return $this->title->name;
     }
 
     public function getSexAttribute()
@@ -44,7 +49,10 @@ protected $hidden=['gender'];
             return 40;
         }
     }
-
+    public function title()
+    {
+        return $this->belongsTo('App\Title');
+    }
 
     public function user()
     {
@@ -96,6 +104,11 @@ protected $hidden=['gender'];
     public function current_contract()
     {
       //  return $this->contracts()->where
+    }
+
+    public function country()
+    {
+        return $this->belongsTo('App\Country');
     }
 
 }

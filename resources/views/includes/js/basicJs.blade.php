@@ -14,4 +14,4 @@
 
 <script src="{{asset("/bower_components/moment/moment.js") }}" type="text/javascript"></script>
 <script src="{{asset("/bower_components/moment/locale/fr.js") }}" type="text/javascript"></script>
-<script src="{{asset("/js/vue-spinner/dist/vue-spinner.js") }}" type="text/javascript"></script>
+
