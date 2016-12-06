@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::resource('leave_policies','Web\LeavePolicyController');
 Route::resource('pars','Web\ParController');
 Route::resource('funds','Web\FundController');
 Route::resource('holiday_lists','Web\HolidayListController');
@@ -49,7 +50,7 @@ Route::get('/test', function()
     });
 
 });
-
+Route::resource('leave_types','Web\LeaveTypeController');
 Route::get('/currencies','Web\CurrencyController@index');
 /*\Event::listen('Illuminate\Database\Events\QueryExecuted', function ($query) {
     var_dump($query->sql);
