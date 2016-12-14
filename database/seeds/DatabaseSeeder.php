@@ -14,6 +14,11 @@ class DatabaseSeeder extends Seeder
 
         // Basics Tables
        // $this->call(MonthsTableSeeder::class);
+        $this->call(ContractTypesTableSeeder::class);
+        $this->call(SalaryPeriodsTableSeeder::class);
+        $this->call(DaysTableSeeder::class);
+        $this->call(LeaveCalculatingMethodsTableSeeder::class);
+        $this->call(GradesTableSeeder::class);
         $this->call(CountriesTableSeeder::class);
         $this->call(TitlesTableSeeder::class);
          $this->call(GendersTableSeeder::class);

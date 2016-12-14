@@ -4,9 +4,9 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Nouvelle ligne</h4>
+                <h4 class="modal-title">Nouveau paramètre</h4>
             </div>
-            <form class="form-horizontal" method="post" action="/permission" id="my-modal-form">
+            <form class="form-horizontal" method="POST" v-on:submit.prevent="addLeaveSetting">
                 <div class="modal-body">
 
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -15,34 +15,37 @@
                         <label  class="col-sm-4 control-label">Type de congé</label>
 
                         <div class="col-sm-8">
-                            <select  class="form-control"  ></select>
+                            <v-select :url="'/api/select/leave_types/active'" v-on:new_item_chosen="new_leave_setting.leave_type = arguments[0]"></v-select>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label  class="col-sm-4 control-label">Renouveler le</label>
 
-                        <div class="col-sm-2">
-                            <select  class="form-control"  ></select>
-                        </div>
-                        <div class="col-sm-4">
-                            <select  class="form-control"  ></select>
-                        </div>
-                    </div>
 
                     <div class="form-group">
                         <label  class="col-sm-4 control-label">Allocation annuelle</label>
 
                         <div class="col-sm-2">
-                            <input  type="number" class="form-control" min="1" />
+                            <input  type="number" v-model.number="new_leave_setting.yearly_allowance" class="form-control" min="1" />
                         </div>
                         <div class="col-sm-6">
                         </div>
                     </div>
                     <div class="form-group">
+                        <label  class="col-sm-4 control-label">Renouveler chaque</label>
+
+
+                        <div class="col-sm-4">
+                            <v-select :url="'/api/select/months'" v-on:new_item_chosen="new_leave_setting.renew_on.month = arguments[0]"></v-select>
+                        </div>
+                        <div class="col-sm-2">
+                            <input  type="number" v-model.number="new_leave_setting.renew_on.dayOfMonth" class="form-control" min="1" />
+                        </div>
+
+                    </div>
+                    <div class="form-group">
                         <label  class="col-sm-4 control-label">Balance limite</label>
 
                         <div class="col-sm-2">
-                            <input  type="number" class="form-control" min="1" />
+                            <input  type="number" v-model.number=" new_leave_setting.maxBalance" class="form-control" min="1" />
                         </div>
                         <div class="col-sm-6">
                         </div>

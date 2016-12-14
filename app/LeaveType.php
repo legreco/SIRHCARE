@@ -18,4 +18,9 @@ class LeaveType extends Model
     {
         return $this->hasMany('App\LeaveRequest');
     }
+    
+    public function leave_policies()
+    {
+        return $this->belongsToMany('App\LeavePolicy');
+    }
 }

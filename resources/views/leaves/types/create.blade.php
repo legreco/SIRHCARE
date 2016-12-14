@@ -24,23 +24,36 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-3 control-label">Nom</label>
+                            <label  class="col-sm-4 control-label">Nom</label>
 
-                            <div class="col-sm-9">
+                            <div class="col-sm-8">
                                 <input type="email" class="form-control" id="inputEmail3" placeholder="Nom du type de congé. Ex:Congé maladie">
                             </div>
-                        </div>
+                            </div>
+                            <div class="form-group">
+                                <label  class="col-sm-4 control-label">Code</label>
+
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" />
+                                </div>
+                                <div class="col-sm-4">
+
+                                </div>
+                            </div>
 
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-3 control-label">Couleur</label>
+                            <label for="inputEmail3" class="col-sm-4 control-label">Couleur</label>
 
-                            <div class="col-sm-9">
+                            <div class="col-sm-4">
                                 <input type="color" class="form-control" id="inputEmail3" placeholder="Email">
+                            </div>
+                            <div class="col-sm-4">
+
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-9">
+                            <div class="col-sm-offset-4 col-sm-8">
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox" v-model="deductFromBank"> Déduire de compte congé
@@ -49,16 +62,16 @@
                             </div>
                         </div>
                         <div class="form-group" v-if="deductFromBank">
-                            <label for="inputEmail3" class="col-sm-3 control-label">Déduire de</label>
+                            <label for="inputEmail3" class="col-sm-4 control-label">Déduire de</label>
 
-                            <div class="col-sm-9">
+                            <div class="col-sm-8">
                                 <select class="form-control" id="inputEmail3" placeholder="Email">
-                                    </select>
+                                </select>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-9">
+                            <div class="col-sm-offset-4 col-sm-8">
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox"> Congé payé
@@ -68,16 +81,28 @@
                         </div>
 
                         <div class="form-group">
-                            <label  class="col-sm-6 control-label">Délai soumission avant début congé</label>
+                            <label  class="col-sm-4 control-label">Délai soumission</label>
 
-                            <div class="col-sm-offset-2 col-sm-2">
+                            <div class=" col-sm-2">
                                 <input type="number" class="form-control" min="0" placeholder="0"/>
 
                             </div>
                             <label  class="col-sm-2 control-label">Jour(s)</label>
+                            <div class=" col-sm-4">
+
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label  class="col-sm-4 control-label">Méthode de calcul</label>
+
+                            <div class="col-sm-8">
+                                <v-select url="/api/select/leave_calculating_methods"></v-select>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-9">
+                            <div class="col-sm-offset-4 col-sm-8">
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox" > Activer à la création

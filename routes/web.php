@@ -52,6 +52,8 @@ Route::get('/test', function()
 });
 Route::resource('leave_types','Web\LeaveTypeController');
 Route::get('/currencies','Web\CurrencyController@index');
+Route::get('days','Web\DayController@index');
+Route::resource('contracts','Web\ContractController');
 /*\Event::listen('Illuminate\Database\Events\QueryExecuted', function ($query) {
     var_dump($query->sql);
     var_dump($query->bindings);

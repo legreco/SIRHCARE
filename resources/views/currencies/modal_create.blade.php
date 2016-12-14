@@ -8,7 +8,7 @@
             </div>
             <div class="modal-body">
 
-                <form method="POST" enctype="multipart/form-data" v-on:submit.prevent="createCurrency">
+                <form method="POST"  v-on:submit.prevent="createCurrency">
 
                     <div class="form-group">
                         <label>Nom:</label>

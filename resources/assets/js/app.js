@@ -13,7 +13,7 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
-
-Vue.component('v-select-countries', require('./components/test.vue'));
-Vue.component('v-select', VueSelect.VueSelect);
+Vue.component('v-select-leave-type', require('./components/v-select-leave-type.vue'));
+Vue.component('v-select', require('./components/v-select.vue'));
+//Vue.component('v-select-countries', require('./components/test.vue'));
+//Vue.component('v-select', VueSelect.VueSelect);
