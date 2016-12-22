@@ -36,6 +36,15 @@ export default {
 
         this.item = this.options[0];
 
+      },
+      getOptions ()
+      {
+         this.$http.get(this.url).then((response) => {
+    // success callback
+       this.options=response.data;
+  }, (response) => {
+    // error callback
+  });
       }
     },
     components: {
@@ -45,18 +54,25 @@ export default {
         watch: {
         item: function (newItem)
         {
-        this.$emit('new_item_chosen',newItem);
+        this.$emit('new_select',newItem);
+        },
+         url: function ()
+        {
+         this.reset();
+         this.getOptions();
+
         }
+
 
 
         },
     mounted: function () {
-        this.$http.get(this.url).then((response) => {
-    // success callback
-       this.options=response.data;
-  }, (response) => {
-    // error callback
-  });
+
+    if(this.url!=null)
+
+    this.getOptions();
+
+
     }
   }
 </script>

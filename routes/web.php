@@ -29,15 +29,15 @@ Route::resource('employees','Web\EmployeeController');
 Route::post('leaveRequest/approve','LeaveRequestController@approve');
 Route::get('/home', 'HomeController@index');
 Route::get('/', 'HomeController@index');
-Route::resource('user','UserController');
+Route::resource('users','Web\UserController');
 Route::resource('permission','PermissionController');
 Route::resource('role','RoleController');
 Route::resource('resources','ResourceController');
-
+Route::resource('contract_types','Web\ContractTypeController');
 Route::get('leaveRequests/incoming','LeaveRequestController@getEmployeeSubordinatesLeaveRequests');
 Route::get('leaveRequests/myRequests','LeaveRequestController@getEmployeeLeaveRequests');
 Route::resource('leaveRequest','LeaveRequestController');
-
+Route::get('org_charts','Web\OrgChartController@index');
 
 Route::get('/test', function()
 {

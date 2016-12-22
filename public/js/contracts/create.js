@@ -11,7 +11,19 @@ var create_contract_vm =new Vue({
             "name":"chef bureau",
         "department":"IT",
         "location":"Ouest"},
-        loading:false
+        loading:false,
+        salaryRepartition:false,
+        dist_lines:[],
+        new_dist_line:{
+            "deptId":{},
+            "fundCode":{"value":1},
+            "businessUnit":{},
+            "projectId":{},
+            "activity":{},
+            "sourceType":{}
+            
+        }
+          
     },
 
 
@@ -39,6 +51,14 @@ this.positions.push(this.new_position);
         search: function () {
            this.positions=[];
             this.loading=true;
+        },
+        showAddDistributionLineModal: function () {
+            $("#modal-add-dist-line").modal('show');
+        },
+        addDistLine : function () {
+            $("#modal-add-dist-line").modal('hide');
+            var inputs=JSON.parse(JSON.stringify(this.new_dist_line));
+            this.dist_lines.push(inputs);
         }
 
 
@@ -48,6 +68,13 @@ this.positions.push(this.new_position);
 
 
     },
+    
+    computed: {
+        fund_projects_url: function () {
+            if(this.new_dist_line.fundCode==null) return ;
+            return '/api/select/fund/'+this.new_dist_line.fundCode.value+'/projects/active';
+        }
+    }
 
 
 

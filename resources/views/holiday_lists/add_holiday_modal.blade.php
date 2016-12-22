@@ -20,6 +20,11 @@
                         <input type="date" name="title" class="form-control" v-model="newHoliday.date"/>
                     </div>
 
+                    <div class="form-group">
+                        <label>Date:</label>
+                        <input type="date" name="title" class="form-control" v-model="newHoliday.date"/>
+                    </div>
+
                     <div class="modal-footer">
 
                         <button type="submit"  class="btn btn-success">Submit</button>

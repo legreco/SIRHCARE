@@ -245,7 +245,7 @@
                     <div class="row">
                         <div  class="col-md-1"></div>
 
-                        <div class="col-md-8">
+                        <div class="col-md-10">
                             <div class="box box-info">
                                 <div class="box-header with-border">
                                     <h3 class="box-title">Informations financières</h3>
@@ -282,7 +282,77 @@
                                         </div>
                                     </div>
 
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-4 col-sm-8">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" v-model="salaryRepartition"> Spécifier répartition salaire
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div v-if="salaryRepartition" class="panel panel-primary">
+                                        <div class="panel-heading">Résultats</div>
+                                        <div class="panel-body">
+                                            <table class="table table-striped table-hover">
+                                                <tr>
+                                                    <th>
+                                                        DEPT ID
+                                                    </th>
+                                                    <th>
+                                                        FUND CODE
+                                                    </th>
+                                                    <th>
+                                                       BUSINESS UNIT
+                                                    </th>
+                                                    <th>
+                                                        PROJECT ID
+                                                    </th>
+                                                    <th>
+                                                        SOURCE TYPE
+                                                    </th>
+                                                    <th>
+                                                        DISTRIBUTION
+                                                    </th>
+                                                    <th>
+                                                        <div class="btn-group-sm">
+                                                            <button type="button" class="btn btn-success" v-on:click.prevent="showAddDistributionLineModal"><i class="fa fa-plus"></i> </button>
+                                                            <button type="button" class="btn btn-danger"><i class="fa fa-remove"></i></button>
 
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                                <tr v-for="dist_line in dist_lines">
+                                                    <td>
+                                                        @{{ dist_line.deptId.text }}
+                                                    </td>
+                                                    <td>
+                                                        @{{ dist_line.fundCode.text }}
+                                                    </td>
+                                                    <td>
+                                                        @{{ dist_line.businessUnit.text }}
+                                                    </td>
+                                                    <td>
+                                                        @{{ dist_line.projectId.text }}
+                                                    </td>
+                                                    <td>
+
+                                                    </td>
+                                                    <td>
+
+                                                    </td>
+                                                    <td>
+                                                        <div class="btn-group-xs">
+                                                            <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i> </button>
+                                                            <button type="button" class="btn btn-danger"><i class="fa fa-remove"></i></button>
+
+                                                        </div>
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
 
 
                                     <!-- /.input group -->
@@ -300,14 +370,14 @@
 
                         </div>
 
-                        <div class="col-md-3"></div>
+                        <div class="col-md-1"></div>
 
 
                     </div>
                     <div class="row">
 
                         <div class="col-md-1"></div>
-                        <div class="col-md-8">
+                        <div class="col-md-10">
                             <div class="box box-info">
                                 <div class="box-header with-border">
                                     <h3 class="box-title">Allocations</h3>
@@ -375,7 +445,7 @@
 
                         </div>
 
-                        <div class="col-md-3"></div>
+                        <div class="col-md-1"></div>
 
 
                     </div>
@@ -385,6 +455,7 @@
 
         </div>
         @include('contracts.modal_search_position')
+        @include('contracts.modal_add_dist_line')
     </div>
 @endsection
 @section('script')

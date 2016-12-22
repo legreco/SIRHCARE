@@ -27,7 +27,7 @@
                     <td>{{Auth::user()->employee->employeeId}}</td>
                     <td>IT Web Developer Intern</td>
                     <td>CARE</td>
-                    <td>October 2016</td>
+                    <td><input type="month"/> </td>
                 </tr>
 
                 </tbody>
