@@ -22,7 +22,7 @@ Route::get('roles','RoleApiController@index');
 
 Route::resource('notifications','NotificationApiController');
 Route::get('user/{id}/notifications','NotificationApiController@getUserNotifications');
-Route::resource('employees','Api\EmployeeController');
+//Route::resource('employees','Api\EmployeeController');
 Route::resource('currencies','Api\CurrencyController');
 Route::get('titles','Api\TitleController@index');
 Route::get('genders','Api\GenderController@index');

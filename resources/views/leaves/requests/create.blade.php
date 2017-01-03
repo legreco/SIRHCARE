@@ -3,9 +3,8 @@
     <h1>Gestion des congés<small>Nouvelle demande</small></h1>
 @endsection
 @section('content')
-    <link href="{{ asset("/bower_components/AdminLTE/plugins/datepicker/datepicker3.css")}}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset("/bower_components/AdminLTE/plugins/select2/select2.css")}}" rel="stylesheet" type="text/css" />
-<div class="row">
+
+<div class="row" id="leave_request_create_vue">
     <div class="col-md-3">
 
         <div class="box box-solid">
@@ -29,24 +28,7 @@
             <!-- /.box-body -->
         </div>
         <!-- /. box -->
-        <div class="box box-solid">
-            <div class="box-header with-border">
-                <h3 class="box-title">Labels</h3>
 
-                <div class="box-tools">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="box-body no-padding">
-                <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#"><i class="fa fa-circle-o text-red"></i> Important</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Promotions</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> Social</a></li>
-                </ul>
-            </div>
-            <!-- /.box-body -->
-        </div>
         <!-- /.box -->
     </div>
     <div class="col-md-6">
@@ -63,14 +45,13 @@
 
                                     <div class="form-group">
                                             <label>Type de congé</label>
-                                        <select class="form-control" id="leaveType" name="leave_type_id" style="width: 100%">
-                                        </select>
+                                        <v-select url="/api/select/leave_types/active" ></v-select>
                                     </div>
 
 
                                     <div class="form-group">
                                             <label >Nombre de jours</label>
-                                        <input type="text" class="form-control" placeholder="Entrer le nombre de jours demandés" name="duration"  >
+                                        <input type="number" class="form-control"  name="duration"  >
 
                                     </div>
 
@@ -81,7 +62,7 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" name="startDate" class="form-control pull-right datepicker">
+                                <input type="date" name="startDate" class="form-control pull-right">
                             </div>
 
                             <!-- /.input group -->
@@ -129,43 +110,10 @@
     <div class="col-md-3">
 
     </div>
-
+</div>
 
 @endsection
 @section('script')
-    <script src="{{ asset ("/bower_components/AdminLTE/plugins/datepicker/bootstrap-datepicker.js") }}" type="text/javascript"></script>
-    <script src="{{ asset ("/bower_components/AdminLTE/plugins/select2/select2.min.js") }}" type="text/javascript"></script>
+    <script src="{{ asset ("/js/leave_requests/create.js") }}" type="text/javascript"></script>
 
-
-
-    <script>
-        $(".select2").select2();
-        //Date picker
-        $('.datepicker').datepicker({
-            autoclose: true,
-            format: 'yyyy/mm/dd',
-            startDate: '+0d',
-            daysOfWeekDisabled: [0,6]
-        });
-
-        $("#leaveType").select2({
-            placeholder: "Selectionner un type de congé",
-            allowClear: true,
-            ajax: {
-                dataType: 'json',
-                url: '{{ url("api/leave_types") }}',
-                delay: 400,
-                data: function(params) {
-                    return {
-                        term: params.term
-                    }
-                },
-                processResults: function (data, page) {
-                    return {
-                        results: data
-                    };
-                },
-            }
-        });
-    </script>
 @endsection

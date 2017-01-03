@@ -63,10 +63,11 @@ class LeaveSetupTables extends Migration
             $table->string('address');
             $table->string('telephone');
             $table->unsignedInteger('leave_type_id');
-            $table->boolean('validateStep1')->nullable();
-            $table->boolean('validateStep2')->nullable();
             $table->string('status');
             $table->uuid('employee_id');
+            $table->boolean('validated')->nullable();
+            $table->dateTime('validatedOn')->nullable();
+            $table->uuid('validatedBy')->nullable();
             $table->timestamps();
 
             $table->primary('id');

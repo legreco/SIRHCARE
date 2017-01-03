@@ -13,8 +13,9 @@ class DatabaseSeeder extends Seeder
     {
 
         // Basics Tables
-       // $this->call(MonthsTableSeeder::class);
-        $this->call(CalendarYearsTableSeeder::class);
+        $this->call(MonthsTableSeeder::class);
+        $this->call(AllDatesTableSeeder::class);
+       // $this->call(CalendarYearsTableSeeder::class);
         $this->call(SourceTypesTableSeeder::class);
         $this->call(BusinessUnitsTableSeeder::class);
         $this->call(FundsTableSeeder::class);

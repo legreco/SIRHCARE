@@ -7,6 +7,8 @@
 <link href="{{ asset("/bower_components/AdminLTE/ionicons-2.0.1/css/ionicons.min.css") }}" rel="stylesheet" type="text/css" />
 <!-- Theme style -->
 <link href="{{ asset("/bower_components/AdminLTE/dist/css/AdminLTE.css")}}" rel="stylesheet" type="text/css" />
+<link href="{{ asset("/bower_components/progress-tracker/app/styles/progress-tracker.css")}}" rel="stylesheet" type="text/css" />
+<link href="{{ asset("/bower_components/progress-tracker/app/styles/progress-tracker.scss")}}" rel="stylesheet" type="text/css" />
 <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
       page. However, you can choose any other skin. Make sure you        apply the skin class to the body tag so the changes take effect.
 -->

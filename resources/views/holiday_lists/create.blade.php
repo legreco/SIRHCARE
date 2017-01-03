@@ -1,103 +1,178 @@
 @extends('layouts.app')
+@section('content-header')
 
+<h1> Gestion des jours chomés </h1>
+@endsection
+@section('css')
+    <style>
+        .slide-fade-enter-active {
+            transition: all .3s ease;
+        }
+        .slide-fade-leave-active {
+            transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+        }
+        .slide-fade-enter, .slide-fade-leave-active {
+            transform: translateX(10px);
+            opacity: 0;
+        }
+    </style>
+    <link href="{{ asset("/bower_components/fullcalendar/fullcalendar.min.css")}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset("/bower_components/fullcalendar/fullcalendar.print.min.css")}}" rel="stylesheet" type="text/css" media="print" />
+
+    @endsection
 @section('content')
-    <div class="row" id="holiday_lists_vue">
-        <div class="col-md-2">
+    <div id="holiday_lists_vue">
+     {{--   <transition name="slide-fade"  mode="out-in">
+            <div v-if="!showList" key="test">
+                <div class="row">
+                    <div class='col-md-4'>
+                    </div>
+                    <div class='col-md-4'>
+                        <!-- Box -->
+                        @include('includes.info.session_flash_status')
+                        <div class="box box-primary">
 
-        </div>
+                            <div class="box-body">
 
-        <div class="col-md-8">
-            <!-- Box -->
+                                <form class="form" method="post" action="/funds">
+                                    <div class="box-body">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Liste des congés</h3>
+                                        <div class="form-group">
+                                            <label>Spécifier l'année</label>
+                                            <input class="form-control"  type="number" v-model="year" />
+                                        </div>
 
-                    <div class="box-tools">
-                        <button type="button" class="btn btn-flat btn-info" v-on:click="showAddHolidayModal">
-                            <i class="fa fa-plus"></i>
-                        Ajouter jour férié
+
+
+
+
+
+                                        <!-- md6-->
+
+                                        <!-- /.row -->
+                                    </div>
+                                    <!-- /.box-body -->
+
+                                    <!-- /.box-footer -->
+                                </form>
+
+
+                            </div><!-- /.box-body -->
+                            <div class="box-footer">
+
+                                <button v-on:click="showList = !showList" class="btn btn-block btn-flat btn-info">Suivant <i class="fa fa-arrow-right"></i> </button>
+                            </div>
+                        </div><!-- /.box -->
+
+                    </div><!-- /.col -->
+                    <div class='col-md-4'>
+                    </div>
+                </div>
+            </div>
+            <div v-if="showList" key="test1">
+                @include('holiday_lists.list')
+            </div>
+        </transition>--}}
+
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Liste des jours chomés de l'année @{{year}}</h3>
+
+                        <div class="box-tools">
+                            <button type="button" class="btn btn-flat btn-xs btn-info" v-on:click="showAddHolidayModal">
+                                <i class="fa fa-plus"></i>
+                                Ajouter jour férié
+                            </button>
+                        </div>
+
+                    </div>
+                    <div class="box-body">
+
+
+                        <div v-if="holidays.length==0" class="callout callout-warning">
+                            <h4><i class="fa fa-warning"></i>     Liste vide!</h4>
+                            La liste est vide. Veuillez ajouter des éléments
+                        </div>
+                        <table v-if="holidays.length>0" class="table table-condensed">
+                            <tr>
+                                <th>Date(s)</th>
+                                <th> Jour</th>
+                                <th> Evénement</th>
+                                <th></th>
+
+                            </tr>
+
+                            <tr v-for="holiday in holidays" >
+                                <td >
+                                    <div v-cloak>
+                                        @{{ holiday.startDate }}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div v-cloak>
+                                        @{{ holiday.endDate }}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div v-cloak>
+                                        @{{ holiday.name }}
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="btn btn-xs btn-warning">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </button>
+                                    <button class="btn btn-xs btn-info">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                    <button class="btn btn-xs btn-danger">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </button>
+                                </td>
+
+                        </table>
+
+                    </div><!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit"  class="btn btn-success pull-right">
+                            <i class="fa fa-save"></i>
+                            Sauvegarder liste
+                        </button>
+                        <button type="submit"  class="btn btn-success pull-left">
+                            <i class="fa fa-arrow-right"></i>
+                            Suivant
                         </button>
                     </div>
+                </div><!-- /.box -->
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div id="calendar">
 
-                </div>
-                <div class="box-body">
-
-                    <div class="form-group">
-                        <label>Année</label>
-                        <input type="text" name="title" class="form-control"  placeholder=""/>
+                        </div>
                     </div>
-                    <div v-if="holidays.length==0" class="callout callout-warning">
-                        <h4><i class="fa fa-warning"></i>     Liste vide!</h4>
-                        La liste est vide. Veuillez ajouter des éléments
-                    </div>
-                    <table v-if="holidays.length>0" class="table table-condensed">
-                        <tr>
-                            <th>Date</th>
-                            <th> Nom du jour</th>
-                            <th> Symbole</th>
-                            <th></th>
-
-                        </tr>
-
-                        <tr v-for="holiday in holidays" >
-                            <td >
-                                <div v-cloak>
-                            @{{ holiday.name }}
-                                </div>
-                            </td>
-                            <td>
-                                <div v-cloak>
-                                    @{{ holiday.date }}
-                                </div>
-                            </td>
-                            <td>
-                                <div v-cloak>
-
-                                </div>
-                            </td>
-                           {{-- <td>
-                                <button class="btn btn-warning" @click.prevent="editCurrency(currency)">
-                                    <span class="glyphicon glyphicon-edit"></span>
-                                </button>
-                                <button class="btn btn-info" @click.prevent="editCurrency(currency)">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                                <button class="btn btn-danger" @click.prevent="editCurrency(currency)">
-                                    <span class="fa fa-ban"></span>
-                                </button>
-                            </td>--}}
-                        </tr>
-
-                    </table>
-
-                </div><!-- /.box-body -->
-                <div class="box-footer">
-                    <button type="submit"  class="btn btn-success pull-right">
-                        <i class="fa fa-save"></i>
-                        Sauvegarder liste
-                    </button>
-                    <button type="submit"  class="btn btn-success pull-left">
-                        <i class="fa fa-save"></i>
-                        Appliquer liste
-                    </button>
                 </div>
-            </div><!-- /.box -->
 
+            </div>
 
         </div>
-        <div class="col-md-2">
-
-        </div>
-
 
         @include('holiday_lists.add_holiday_modal')
     </div>
-
 
 @endsection
 
 
 @section('script')
-    <script src="{{asset("/js/holiday_lists/create.js") }}" type="text/javascript"></script>
+
+    <script src="{{asset("/bower_components/fullcalendar/fullcalendar.min.js") }}" type="text/javascript"></script>
+
+
+        <script src="{{asset("/js/holiday_lists/create.js") }}" type="text/javascript"></script>
+
 @endsection
