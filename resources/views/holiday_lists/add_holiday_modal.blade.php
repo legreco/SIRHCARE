@@ -12,17 +12,17 @@
 
                     <div class="form-group">
                         <label>Nom du jour férié</label>
-                        <input type="text" name="title" class="form-control" v-model="newHoliday.name"  placeholder="Nom du jour férié"/>
+                     <v-select url="/api/select/holiday/types"></v-select>
                     </div>
 
                     <div class="form-group">
                         <label>Date début</label>
-                        <input type="text" name="title" class="form-control" v-model.date="newHoliday.startDate"/>
+                        <input type="text" name="title" class="form-control" v-model="newHoliday.startDate" readonly/>
                     </div>
 
                     <div class="form-group">
                         <label>Date fin</label>
-                        <input type="text" name="title" class="form-control" v-model="newHoliday.endDate"/>
+                        <input type="text" name="title" class="form-control" v-model="newHoliday.endDate" readonly/>
                     </div>
 
                     <div class="checkbox">

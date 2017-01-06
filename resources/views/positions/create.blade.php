@@ -8,7 +8,7 @@
 @endsection
 
 @section('content')
-    <div class="row">
+    <div class="row" id="create_position_vue">
 
         <div class="col-md-3"></div>
         <div class="col-md-6">
@@ -26,16 +26,21 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="form-group">
                             <label>Titre</label>
-                            <input type="text"  name="name" class="form-control"  placeholder="Titre de la position">
+                            <input type="text"  name="name" class="form-control" v-model="position.name"  placeholder="Titre de la position">
                         </div>
                         <div class="form-group">
                             <label>Localization</label>
-                            <select name="location_id" id="location" style="width: 100%;"></select>
+                          <v-select url="/api/select/locations" v-on:new_select="position.localization=arguments[0]"></v-select>
                         </div>
 
                         <div class="form-group">
                             <label>Département</label>
-                            <select name="department_id" id="department" style="width: 100%;"></select>
+                            <v-select url="/api/select/departments" v-on:new_select="position.department=arguments[0]"></v-select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Fonction</label>
+                            <v-select url="/api/select/fonctions" v-on:new_select="position.fonction=arguments[0]"></v-select>
                         </div>
 
 
@@ -61,6 +66,6 @@
 
 @endsection
 @section('script')
-    @include('includes.js.select2')
+
     <script src="{{asset("/js/positions/create.js") }}" type="text/javascript"></script>
 @endsection

@@ -21,6 +21,7 @@ class CreatePositionsTable extends Migration
             $table->unsignedInteger('position_status_id');
             $table->unsignedInteger('department_id');
             $table->unsignedInteger('location_id');
+            $table->unsignedInteger('fonction_id');
             $table->timestamps();
 
 
@@ -29,6 +30,7 @@ class CreatePositionsTable extends Migration
 
             $table->foreign('department_id')->references('id')->on('departments')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('location_id')->references('id')->on('locations')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('fonction_id')->references('id')->on('fonctions')->onUpdate('cascade')->onDelete('cascade');
 
         });
     }

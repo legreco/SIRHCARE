@@ -37,6 +37,7 @@
             @include('layouts.sidebar_menus.recruitment')
 
            @include('layouts.sidebar_menus.employee_management')
+            @include('layouts.sidebar_menus.positions')
 
             <li class="treeview ">
                 <a href="#">

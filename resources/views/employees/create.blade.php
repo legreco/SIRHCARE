@@ -15,7 +15,7 @@
            <form class="form" method="post" action="/employee" id="my-form" enctype="multipart/form-data">
            <div class="box box-solid">
                <div class="box-header with-border">
-                   <h3 class="box-title">Informations personnelles</h3>
+                   <h3 class="box-title">INFORMATIONS DE BASE</h3>
 
                    <div class="box-tools pull-right">
                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -88,6 +88,83 @@
                </div>
                <!-- /.box-body -->
            </div>
+
+
+               <div class="box box-solid">
+                   <div class="box-header with-border">
+                       <h3 class="box-title">INFORMATIONS MÉDICALES</h3>
+
+                       <div class="box-tools pull-right">
+                           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                           </button>
+                       </div>
+                       <!-- /.box-tools -->
+                   </div>
+                   <!-- /.box-header -->
+                   <div class="box-body" style="display: block;">
+
+                       <div class="box-body">
+                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                           <div class="row">
+
+
+                               <div class="col-md-6">
+                                   <div class="form-group">
+                                       <label>Titre</label>
+                                       <select name="title_id" id="title" class="form-control" style="width: 100%;" ></select>
+
+                                   </div>
+                                   <div class="form-group">
+                                       <label>Nom</label>
+                                       <input type="text" name="lastName" class="form-control"  placeholder="Nom de famille de l'employé">
+
+                                   </div>
+                                   <div class="form-group">
+                                       <label>Prénom</label>
+                                       <input type="text" name="firstName" class="form-control"  placeholder="Prénom de l'employé">
+                                   </div>
+                                   <div class="form-group">
+                                       <label>Sexe</label>
+                                       <select id="gender" class="form-control" name="gender_id" style="width: 100%;"  ></select>
+                                   </div>
+
+
+
+                                   <div class="row">
+                                       <div class="col-md-6">
+                                           <div class="form-group">
+                                               <label>Date de naissance</label>
+                                               <input type="text" name="birthDate" class="form-control datepicker"  placeholder="">
+
+                                           </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                           <div class="form-group">
+                                               <label>CIN ou NIF</label>
+                                               <input type="text" name="cinOrNif" class="form-control"  placeholder="">
+
+                                           </div>
+                                       </div>
+
+                                   </div>
+                               </div>
+                               <div class="col-md-6">
+                                   <div class="form-group pull-right">
+                                       <img id="blah" src="{{ asset("/images/profil/default/defaultUserImage.png") }}"  alt="User Image"  alt="your image" style="height: 256px; width: 256px;" />
+                                       <input type='file' id="imgInp" />
+                                   </div>
+                               </div>
+
+                           </div>
+
+                       </div>
+
+                       <!-- /.box-footer -->
+
+                   </div>
+                   <!-- /.box-body -->
+               </div>
            <!-- /.box -->
            </form>
        </div>

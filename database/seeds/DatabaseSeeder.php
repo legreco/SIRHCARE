@@ -13,7 +13,9 @@ class DatabaseSeeder extends Seeder
     {
 
         // Basics Tables
+   $this->call(FonctionsTableSeeder::class);
         $this->call(MonthsTableSeeder::class);
+        $this->call(HolidayTypesTableSeeder::class);
         $this->call(AllDatesTableSeeder::class);
        // $this->call(CalendarYearsTableSeeder::class);
         $this->call(SourceTypesTableSeeder::class);
@@ -42,5 +44,6 @@ class DatabaseSeeder extends Seeder
         $this->call(LeaveTypesTableSeeder::class);
         $this->call(LeaveAccountsTableSeeder::class);
         $this->call(ContractStatusesTableSeeder::class);
+        $this->call(PositionsTableSeeder::class);
     }
 }

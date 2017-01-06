@@ -16,6 +16,8 @@ class CreatePositionStatusesTable extends Migration
         Schema::create('position_statuses', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',50)->unique();
+            $table->string('description')->nullable();
+            $table->string('color');
             $table->timestamps();
         });
     }

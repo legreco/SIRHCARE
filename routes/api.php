@@ -39,6 +39,8 @@ Route::get('select/grades','Api\Select\Grades');
 Route::get('select/contract_types','Api\Select\ContractTypes');
 Route::get('select/locations','Api\Select\Locations');
 Route::get('select/departments','Api\Select\Departments');
+Route::get('select/fonctions','Api\Select\Fonctions');
+Route::get('select/holiday/types','Api\Select\HolidayTypes');
 Route::resource('leave_types','Api\LeaveTypeController');
 Route::get('select/dept_ids/active','Api\Select\ActiveDeptIds');
 Route::get('select/funds/active','Api\Select\ActiveFunds');
