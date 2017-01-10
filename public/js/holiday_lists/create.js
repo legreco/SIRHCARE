@@ -1,15 +1,15 @@
 
 
-var currencies_vn =new Vue({
+var holiday_list_vm =new Vue({
 
-    el:'#holiday_lists_vue',
+    el:'#holiday_list_create_vue',
     data:{
         holiday_list:{
             'year':'',
             'holidays':[]
         },
         holidays:[],
-        newHoliday:{'id':'','name':'','startDate':'','endDate':'','isALDeductible':''},
+        newHoliday:{'id':'','name':'','date':'','isALDeductible':''},
         showList:false,
         year:{}
     },
@@ -19,7 +19,7 @@ var currencies_vn =new Vue({
        
     },
     mounted: function(){
-        this.initFullCalendar();
+
 
 
 
@@ -31,64 +31,27 @@ var currencies_vn =new Vue({
     methods : {
 
         showAddHolidayModal: function () {
-            this.formErrors=[];
-       
+            this.newHoliday={};
+            
             $("#add-holiday-modal").modal('show');
         },
 
         addHoliday: function () {
+            var input=JSON.parse(JSON.stringify(this.newHoliday));
+            this.holiday_list.holidays.push(input);
             $("#add-holiday-modal").modal('hide');
-            var event=[];
-
-            event.title=this.newHoliday.name;
-            event.start=this.newHoliday.startDate;
-            event.end=this.newHoliday.endDate;
-            var holiday=JSON.parse(JSON.stringify(this.newHoliday));
-        this.holidays.push(holiday);
-            $('#calendar').fullCalendar('renderEvent',event,true);
         }
         ,
-        initFullCalendar: function () {
-
-
-
-
-
-                $('#calendar').fullCalendar({
-                    header: {
-                        left: 'prev,next today',
-                        center: 'title',
-                        right: 'month,agendaWeek,agendaDay'
-                    },
-                    defaultDate: '2016-12-12',
-                    navLinks: true, // can click day/week names to navigate views
-                    selectable: true,
-                    selectHelper: true,
-                    select: function(start, end) {
-                      currencies_vn.newHoliday.startDate=moment(start,"YYYY-MM-DD");
-                        currencies_vn.newHoliday.endDate=moment(end,"YYYY-MM-DD");
-
-                       currencies_vn.showAddHolidayModal();
-                    },
-                    editable: true,
-                    eventLimit: true// allow "more" link when too many events
-
-                });
-
-
-
+        removeHoliday: function (index) {
+            this.holiday_list.holidays.splice(index,1);
 
         },
-        setNewHolidayStartDate: function (startDate) {
-
-            this.newHoliday.startDate= startDate;
-        },
-        createHolidayList: function()
+        submit: function()
         {
             var input= this.holiday_list;
-            this.$http.post('',input,{emulateJSON:true}).then((response)=>{
+            this.$http.post('/holiday_lists/',input,{emulateJSON:true}).then((response)=>{
 
-
+            alert(JSON.stringify(response.data));
             }, (response)=>{ n}
             )
         }
@@ -97,7 +60,18 @@ var currencies_vn =new Vue({
 
 
       
+        },
+    filters:{
+        dayOfWeekName: function (value) {
+          return moment(value).format('dddd');
+        },
+        dayMonthDisplay: function (value) {
+            return moment(value).format('Do MMMM');
+
         }
+        
+        
+    }
 
        
 

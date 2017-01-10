@@ -43,23 +43,23 @@
                                     {{$employee->lastName}}
                                 </td>
                                 <td>
-                                    {{$employee->categoryId}}
+
                                 </td>
                                 <td>
-                                    {{$employee->sex}}
+
                                 </td>
 
                                 <td>
-                                    {{$employee->job}}
+
                                 </td>
                                 <td>
-                                    {{$employee->salary}}
+
                                 </td>
                                 <td>
-                                    {{$employee->departement}}
+
                                 </td>
                                 <td>
-                                    {{$employee->location}}
+
                                 </td>
                             {{--    <td>
                                     {{$employee->contract->job->departement}}

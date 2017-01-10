@@ -1,17 +1,44 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Employee;
 use Carbon\Carbon;
 class EmployeesTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the dbase seeds.
      *
      * @return void
      */
     public function run()
     {
+
+        /*Excel::load(base_path().'/database/seeds/csv/.csv',function($reader){
+            $results=$reader->get();
+        });
+
+
+
+
+        \Maatwebsite\Excel\Facades\Excel::load(base_path().'/database/seeds/csv/employee_ids.csv', function($reader) {
+
+         
+
+            $array =$reader->toArray();
+            // dump($array);
+            foreach ( $array as $row) {
+                $employee= new \App\Employee();
+
+                $employee->lastName=$row['lastname'];
+                $employee->firstName=$row['firstname'];
+                $employee->employeeId=$row['employeeid'];
+                $employee->save();
+
+            }
+            
+        });
+        */
         //
         $departements=['IT','EDU','OPE','RADIO','FIN','PROC','VSLA','PQL','DFAP','ASUS','KAT'];
         $locations=['JER','PAP','GON','PASCA','HIN','JAC','JRABEL','LAG'];

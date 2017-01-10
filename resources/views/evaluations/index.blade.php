@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content-header')
-    <h1>Gestion jours fériés <small> Listes des jours fériés</small></h1>
+    <h1>Mes évaluations <small></small></h1>
 
 @endsection
 @section('content')
@@ -24,23 +24,23 @@
                             <th>DERNIERE MODIFICATION</th>
                         </tr>
                         @foreach($hLists as $hList)
-                        <tr>
-                            <td>
-                                {{$hList->calendarYear}}
-                            </td>
-                            <td>
-                                {{$hList->holidays->count()}}
-                            </td>
-                            <td>
-                                {{$hList->status}}
-                            </td>
-                            <td>
+                            <tr>
+                                <td>
+                                    {{$hList->calendarYear}}
+                                </td>
+                                <td>
 
-                            </td>
-                            <td>
-                                {{$hList->updated_at}}
-                            </td>
-                        </tr>
+                                </td>
+                                <td>
+                                    {{$hList->status}}
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    {{$hList->updated_at}}
+                                </td>
+                            </tr>
 
                         @endforeach
 

@@ -14,19 +14,19 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->unsignedInteger('title_id');
+            $table->unsignedInteger('title_id')->nullable();
             $table->string('profile_picture')->nullable();
-            $table->string('employeeId',10)->unique();
-            $table->string('categoryId',10)->unique();
+            $table->string('employeeId',10)->unique()->nullable();
+            $table->string('categoryId',10)->unique()->nullable();
             $table->string('firstName');
             $table->string('lastName');
-            $table->unsignedInteger('country_id');
-            $table->unsignedInteger('gender_id');
+            $table->unsignedInteger('country_id')->nullable();
+            $table->unsignedInteger('gender_id')->nullable();
             $table->uuid('employee_sup_id')->nullable();
-            $table->string('cinOrNif');
-            $table->date('birthDate');
-            $table->string('email')->unique();
-            $table->date('hireDate');
+            $table->string('cinOrNif')->nullable();
+            $table->date('birthDate')->nullable();
+            $table->string('email')->unique()->nullable();
+            $table->date('hireDate')->nullable();;
             $table->timestamps();
 
           

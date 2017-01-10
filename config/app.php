@@ -167,6 +167,7 @@ return [
         Proengsoft\JsValidation\JsValidationServiceProvider::class,
         Snowfire\Beautymail\BeautymailServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        'Maatwebsite\Excel\ExcelServiceProvider',
         /*
          * Package Service Providers...
          */
@@ -235,6 +236,7 @@ return [
         'Uuid' => Webpatser\Uuid\Uuid::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Excel' => 'Maatwebsite\Excel\Facades\Excel',
 
     ],
 

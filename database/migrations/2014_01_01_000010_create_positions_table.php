@@ -16,12 +16,12 @@ class CreatePositionsTable extends Migration
 
         Schema::create('positions', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('name',50);
+            $table->string('name');
            
-            $table->unsignedInteger('position_status_id');
-            $table->unsignedInteger('department_id');
-            $table->unsignedInteger('location_id');
-            $table->unsignedInteger('fonction_id');
+            $table->unsignedInteger('position_status_id')->nullable();
+            $table->unsignedInteger('department_id')->nullable();
+            $table->unsignedInteger('location_id')->nullable();
+            $table->unsignedInteger('fonction_id')->nullable();
             $table->timestamps();
 
 

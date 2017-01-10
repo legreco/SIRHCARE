@@ -8,22 +8,16 @@
             </div>
             <div class="modal-body">
 
-                <form method="POST" enctype="multipart/form-data" v-on:submit.prevent="addHoliday">
-
                     <div class="form-group">
                         <label>Nom du jour férié</label>
-                     <v-select url="/api/select/holiday/types"></v-select>
+                     <v-select url="/api/select/holiday/types" v-on:new_select="newHoliday.name=arguments[0].text"></v-select>
                     </div>
 
                     <div class="form-group">
-                        <label>Date début</label>
-                        <input type="text" name="title" class="form-control" v-model="newHoliday.startDate" readonly/>
+                        <label>Date</label>
+                        <input type="date" name="title" class="form-control" v-model="newHoliday.date"/>
                     </div>
 
-                    <div class="form-group">
-                        <label>Date fin</label>
-                        <input type="text" name="title" class="form-control" v-model="newHoliday.endDate" readonly/>
-                    </div>
 
                     <div class="checkbox">
                         <label>
@@ -31,13 +25,23 @@
                         </label>
                     </div>
 
-                    <div class="modal-footer">
 
-                        <button type="submit"  class="btn btn-success">Ajouter</button>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-4">
+                        <button   class="btn btn-block btn-danger">Annuler</button>
                     </div>
+                    <div class="col-md-4">
 
-                </form>
-
+                    </div>
+                    <div class="col-md-4">
+                        <button  class="btn btn-block btn-success" v-on:click="addHoliday">Ajouter</button>
+                    </div>
+                </div>
 
             </div>
         </div>

@@ -33,23 +33,13 @@
                     <li><a href="{{ url('/leaveRequest') }}"><i class="fa fa-circle-o"></i>Acceuil employé</a></li>
                 </ul>
             </li>
-
+            @include('layouts.sidebar_menus.contracts')
             @include('layouts.sidebar_menus.recruitment')
 
-           @include('layouts.sidebar_menus.employee_management')
-            @include('layouts.sidebar_menus.positions')
+           @include('layouts.sidebar_menus.employees')
 
-            <li class="treeview ">
-                <a href="#">
-                    <i class="fa  fa-dollar "></i>
-                    <span>Payroll</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu ">
-                    <li><a href="{{ url('/par/create') }}"><i class="fa fa-circle-o"></i>PAR</a></li>
-                </ul>
-            </li>
-
+            @include('layouts.sidebar_menus.payroll')
+            @include('layouts.sidebar_menus.pars')
             <li class="treeview ">
                 <a href="#">
                     <i class="fa  fa-sitemap"></i>
@@ -66,22 +56,23 @@
            @include('layouts.sidebar_menus.performance')
 
 
-            <li class="header">Paramètres</li>
+
             <!-- Optionally, you can add icons to the links -->
+           @include('layouts.sidebar_menus.settings')
+
             <li class="treeview ">
                 <a href="#">
                     <i class="fa  fa-home"></i>
-                    <span>Départements</span>
+                    <span>Paramètres avancés</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu ">
-                    <li><a href="{{ url('/departement/create') }}"><i class="fa fa-circle-o"></i>Ajouter un département</a></li>
-                    <li><a href="{{ url('/leaveRequest/create') }}"><i class="fa fa-circle-o"></i> Demande de congé</a></li>
+                    <li><a href="{{ url('/departement/create') }}"><i class="fa fa-circle-o"></i>Pays</a></li>
+                    <li><a href="{{ url('/leaveRequest/create') }}"><i class="fa fa-circle-o"></i>Monnaies</a></li>
                     <li><a href=""><i class="fa fa-circle-o"></i>Compteurs de congé</a></li>
                     <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
                 </ul>
             </li>
-
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-users"></i> <span>Gestion des utilisateurs</span>
