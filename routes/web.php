@@ -89,6 +89,8 @@ Route::resource('permission','PermissionController');
 Route::resource('role','RoleController');
 Route::resource('resources','ResourceController');
 Route::resource('contract_types','Web\ContractTypeController');
+Route::get('leaves/requests/my_requests','Web\LeaveRequestController@myLeaveRequests');
+Route::resource('leaves/requests','Web\LeaveRequestController');
 Route::get('leaveRequests/incoming','LeaveRequestController@getEmployeeSubordinatesLeaveRequests');
 Route::get('leaveRequests/myRequests','LeaveRequestController@getEmployeeLeaveRequests');
 Route::resource('leaveRequest','LeaveRequestController');
