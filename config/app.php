@@ -237,6 +237,7 @@ return [
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Excel' => 'Maatwebsite\Excel\Facades\Excel',
+        'EmployeeHelper'=>'App\Helpers\EmployeeHelper::class',
 
     ],
 

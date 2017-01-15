@@ -1,169 +1,97 @@
 
 
-//Date picker
-$('.datepicker').datepicker({
-  autoclose: true,
-  format: 'yyyy/mm/dd'
-});
+var create_employee_vm =new Vue({
+
+  el:'#create_employee_vue',
+  data:{
+    employees:[],
+    pagination: {
+      total: 0,
+      per_page: 2,
+      from: 1,
+      to: 0,
+      current_page: 1
+    },
+    offset: 4,
+    loading:false,
+    color: '#3AB982',
+    height: '35px',
+    width: '4px',
+    margin: '2px',
+    radius: '2px',
+    sexe:true
+  },
 
 
-function readURL(input) {
 
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
+  computed: {
+    isActived: function () {
+      return this.pagination.current_page;
+    },
+    pagesNumber: function () {
+      if (!this.pagination.to) {
+        return [];
+      }
+      var from = this.pagination.current_page - this.offset;
+      if (from < 1) {
+        from = 1;
+      }
+      var to = from + (this.offset * 2);
+      if (to >= this.pagination.last_page) {
+        to = this.pagination.last_page;
+      }
+      var pagesArray = [];
+      while (from <= to) {
+        pagesArray.push(from);
+        from++;
+      }
+      return pagesArray;
+    }
+  },
 
-    reader.onload = function (e) {
-      $('#blah').attr('src', e.target.result);
+  mounted: function(){
+
+
+    this.getEmployees(this.pagination.current_page);
+
+
+
+  },
+
+
+  methods : {
+    getEmployees: function(page) {
+      this.loading=true;
+      this.$http.get('/api/employees?page='+page)
+          .then(response => {
+            this.loading=false;
+            this.employees = response.data.data.data;
+            this.pagination=response.data.pagination;
+          });
+
+    },
+
+
+    listen: function () {
+      Echo.private('App.User.' + userId)
+          .notification((notification) => {
+            this.notifications.unshift(notification);
+            toastr["info"](JSON.stringify(notification));
+            audio.play();
+          });
+    },
+    changePage: function (page) {
+      this.pagination.current_page = page;
+      this.getEmployees(page);
     }
 
-    reader.readAsDataURL(input.files[0]);
+  },
+
+
+  filters:{
+    time_ago: function (value) {
+      return moment(value).fromNow();
+    }
   }
-}
 
-$("#imgInp").change(function(){
-  readURL(this);
-});
-
-
-$("#contractType").select2({
-  placeholder: "Select an option",
-  allowClear: true,
-  ajax: {
-    dataType: 'json',
-    url: '{{ url("contractTypes/all") }}',
-    delay: 400,
-    data: function(params) {
-      return {
-        term: params.term
-      }
-    },
-    processResults: function (data, page) {
-      return {
-        results: data
-      };
-    },
-  }
-});
-
-$("#job").select2({
-  placeholder: "Select an option",
-  allowClear: true,
-  ajax: {
-    dataType: 'json',
-    url: '{{ url("jobs/all") }}',
-    delay: 400,
-    data: function(params) {
-      return {
-        term: params.term
-      }
-    },
-    processResults: function (data, page) {
-      return {
-        results: data
-      };
-    },
-  }
-});
-
-$("#superieur").select2({
-  placeholder: "Select an option",
-  allowClear: true,
-  ajax: {
-    dataType: 'json',
-    url: '{{ url("employees/all") }}',
-    delay: 400,
-    data: function(params) {
-      return {
-        term: params.term
-      }
-    },
-    processResults: function (data, page) {
-      return {
-        results: data
-      };
-    },
-  }
-});
-
-$("#currency").select2({
-  placeholder: "Select an option",
-  allowClear: true,
-  ajax: {
-    dataType: 'json',
-    url: '{{ url("currencies/all") }}',
-    delay: 400,
-    data: function(params) {
-      return {
-        term: params.term
-      }
-    },
-    processResults: function (data, page) {
-      return {
-        results: data
-      };
-    },
-  }
-});
-
-
-$("#title").select2({
-  placeholder: "Choisir un titre de civilité",
-  allowClear: true,
-  ajax: {
-    dataType: 'json',
-    url: appUrl+'api/titles',
-    delay: 400,
-    data: function(params) {
-      return {
-        term: params.term
-      }
-    },
-    processResults: function (data, page) {
-      return {
-        results: data
-      };
-    },
-  }
-});
-
-
-
-$("#gender").select2({
-  placeholder: "Choisir le genre",
-  allowClear: true,
-  ajax: {
-    dataType: 'json',
-    url: appUrl+'api/genders',
-    data: function(params) {
-      return {
-        term: params.term
-      }
-    },
-    processResults: function (data, page) {
-      return {
-        results: data
-      };
-    },
-  }
-});
-
-
-
-$("#employee_sup").select2({
-  placeholder: "Supérieur hierarchique",
-  allowClear: true,
-  ajax: {
-    dataType: 'json',
-    url: appUrl+'api/employees',
-    data: function(params) {
-      return {
-        term: params.term
-      }
-    },
-    processResults: function (data, page) {
-      return {
-        results: data
-      };
-    },
-  }
 });

@@ -16,8 +16,8 @@ class CreatePositionsTable extends Migration
 
         Schema::create('positions', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->string('categoryId')->unique();
             $table->string('name');
-           
             $table->unsignedInteger('position_status_id')->nullable();
             $table->unsignedInteger('department_id')->nullable();
             $table->unsignedInteger('location_id')->nullable();

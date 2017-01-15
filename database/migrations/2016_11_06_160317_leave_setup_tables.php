@@ -57,14 +57,15 @@ class LeaveSetupTables extends Migration
         Schema::create('leave_requests', function (Blueprint $table) {
             $table->uuid('id');
             $table->date('startDate');
-            $table->date('endDate');
+            $table->date('endDate')->nullable();
             $table->integer('duration');
-            $table->string('comments');
-            $table->string('address');
-            $table->string('telephone');
+            $table->string('comments')->nullable();
+            $table->string('address')->nullable();
+            $table->string('telephone')->nullable();
             $table->unsignedInteger('leave_type_id');
             $table->string('status');
             $table->uuid('employee_id');
+            $table->dateTime('submittedOn')->nullable();
             $table->boolean('validated')->nullable();
             $table->dateTime('validatedOn')->nullable();
             $table->uuid('validatedBy')->nullable();

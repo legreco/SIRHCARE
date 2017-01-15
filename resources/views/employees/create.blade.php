@@ -4,9 +4,268 @@
 
 @endsection
 @section('content')
-   @include('includes.css.datepicker3')
-   @include('includes.css.select2')
-   <div id="create_employee_page">
+
+   <div id="create_employee_vue">
+       <div class="row">
+           <div class="col-md-2">
+           </div>
+           <div class="col-md-9">
+               <form class="form-horizontal">
+               <div class="nav-tabs-custom">
+                   <ul class="nav nav-tabs">
+                       <li class="active"><a href="#activity" data-toggle="tab" aria-expanded="true">Basics</a></li>
+                       <li class=""><a href="#timeline" data-toggle="tab" aria-expanded="false">Position</a></li>
+                       <li class=""><a href="#settings" data-toggle="tab" aria-expanded="false">Contract</a></li>
+                       <li class=""><a href="#settings" data-toggle="tab" aria-expanded="false">Leave</a></li>
+                       <li class=""><a href="#settings" data-toggle="tab" aria-expanded="false">Commentaires</a></li>
+                   </ul>
+                   <div class="tab-content">
+                       <div class="tab-pane active" id="activity">
+
+
+
+
+                                   <div class="form-group">
+                                       <label class="col-sm-4 control-label">Nom</label>
+                                       <div class="col-sm-8">
+                                           <input type="text" name="lastName" class="form-control"  placeholder="Nom de famille de l'employé">
+                                       </div>
+
+                                   </div>
+                                   <div class="form-group">
+                                       <label class="col-sm-4 control-label">Prénom</label>
+                                       <div class="col-sm-8">
+                                           <input type="text" name="lastName" class="form-control"  placeholder="Nom de famille de l'employé">
+                                       </div>
+
+                                   </div>
+
+                                   <div class="form-group">
+                                       <label class="col-sm-4 control-label">Sexe</label>
+                                       <div class="col-sm-4">
+                                           <select class="form-control">
+                                               <option value="H">Homme</option>
+                                               <option value="F">Femme</option>
+
+                                           </select>
+                                       </div>
+                                       <div class="col-sm-4">
+                                       </div>
+                                   </div>
+
+
+
+
+
+                                           <div class="form-group">
+                                               <label class="col-sm-4 control-label">Date de naissance</label>
+
+                                               <div class="col-sm-4">
+                                                   <input type="date" name="lastName" class="form-control"  placeholder="Nom de famille de l'employé">
+                                               </div>
+                                               <div class="col-sm-4">
+                                               </div>
+
+                                           </div>
+
+
+
+
+
+
+
+
+
+
+
+                       </div>
+
+
+                       <!-- /.tab-pane -->
+                       <div class="tab-pane" id="timeline">
+
+                           <div class="form-group">
+                               <label  class="col-sm-4 control-label">Poste</label>
+
+                               <div class="col-sm-8">
+
+                                   <div class="input-group">
+                                       <div class="input-group-btn">
+                                           <button type="button" class="btn btn-primary" v-on:click.prevent="showSearchPositionModal"><i class="fa fa-search"></i> </button>
+                                       </div>
+                                       <!-- /btn-group -->
+                                       <input type="text" class="form-control" readonly>
+                                   </div>
+
+                               </div>
+
+
+
+                           </div>
+                           <div class="form-group">
+                               <label  class="col-sm-4 control-label">CategoryID</label>
+
+                               <div class=" col-sm-4">
+                                   <input type="text" class="form-control" readonly/>
+
+                               </div>
+                               <div class=" col-sm-4">
+
+
+                               </div>
+
+
+                           </div>
+                           <div class="form-group">
+                               <label  class="col-sm-4 control-label">Département</label>
+
+                               <div class=" col-sm-8">
+                                   <input type="text" class="form-control" readonly/>
+
+                               </div>
+
+
+                           </div>
+                           <div class="form-group">
+                               <label class="col-sm-4 control-label"> Location</label>
+
+
+                               <div class=" col-sm-4">
+
+                                   <input type="text" class="form-control" readonly>
+
+                               </div>
+                               <div class=" col-sm-4">
+
+                               </div>
+
+                               <!-- /.input group -->
+                           </div>
+                           <div class="form-group">
+                               <label  class="col-sm-4 control-label">Poste supervisant</label>
+
+                               <div class=" col-sm-8">
+                                   <input type="text" class="form-control" readonly/>
+
+                               </div>
+
+
+                           </div>
+                       </div>
+                       <!-- /.tab-pane -->
+
+                       <div class="tab-pane" id="settings">
+                           <div class="form-group">
+                               <label  class="col-sm-4 control-label">Type contrat</label>
+
+                               <div class=" col-sm-6">
+                                   <v-select url="/api/select/contract_types"></v-select>
+
+                               </div>
+
+
+                           </div>
+                           <div class="form-group">
+                               <label class="col-sm-4 control-label"> Début contrat</label>
+
+
+                               <div class=" col-sm-4">
+                                   <div class="input-group date">
+                                       <div class="input-group-addon">
+                                           <i class="fa fa-calendar"></i>
+                                       </div>
+                                       <input type="date" name="startDate" class="form-control pull-right">
+                                   </div>
+                               </div>
+
+                               <!-- /.input group -->
+                           </div>
+                           <div class="form-group">
+                               <label class="col-sm-4 control-label"> Fin contrat</label>
+
+
+                               <div class=" col-sm-4">
+                                   <div class="input-group date">
+                                       <div class="input-group-addon">
+                                           <i class="fa fa-calendar"></i>
+                                       </div>
+                                       <input type="date" name="startDate" class="form-control pull-right">
+                                   </div>
+                               </div>
+
+                               <!-- /.input group -->
+                           </div>
+                           <div class="form-group">
+                               <div class="col-sm-offset-4 col-sm-8">
+                                   <div class="checkbox">
+                                       <label>
+                                           <input type="checkbox" v-model="trialPeriod"> Période probatoire
+                                       </label>
+                                   </div>
+                               </div>
+                           </div>
+
+                           <div class="form-group" v-if="trialPeriod">
+                               <label  class="col-sm-4 control-label">Durée probation</label>
+
+                               <div class=" col-sm-2">
+                                   <input type="number" class="form-control"/>
+
+                               </div>
+
+                               <label  class="col-sm-1 control-label">mois</label>
+                               <div class=" col-sm-5">
+
+
+                               </div>
+                           </div>
+                           <div class="form-group">
+                               <label  class="col-sm-4 control-label">Salaire</label>
+
+                               <div class=" col-sm-3">
+                                   <input type="number" class="form-control" min="0" placeholder="0"/>
+
+                               </div>
+
+                               <div class=" col-sm-5">
+
+
+                               </div>
+                           </div>
+                           <div class="form-group">
+                               <label  class="col-sm-4 control-label">Devise</label>
+
+
+                               <div class=" col-sm-3">
+                                   <v-select url="/api/select/currencies"></v-select>
+
+                               </div>
+
+                               <div class=" col-sm-5">
+                               </div>
+                           </div>
+
+                           <div class="form-group">
+                               <label  class="col-sm-4 control-label">Période salaire</label>
+
+                               <div class=" col-sm-4">
+                                   <v-select url="/api/select/salary_periods"></v-select>
+
+                               </div>
+
+                               <div class=" col-sm-4">
+
+                               </div>
+                           </div>
+                       </div>
+                       <!-- /.tab-pane -->
+                   </div>
+                   <!-- /.tab-content -->
+               </div>
+                   </form>
+           </div>
+           <div class="col-md-1"></div>
+       </div>
    <div class="row">
 
            <div class="col-md-2">
@@ -241,8 +500,6 @@
 
 @endsection
 @section('script')
-    @include('includes.js.datepicker3')
-    @include('includes.js.select2')
     <script src="{{asset("/js/employees/create.js") }}" type="text/javascript"></script>
     <script>
 
