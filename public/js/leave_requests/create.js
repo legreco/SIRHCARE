@@ -11,6 +11,7 @@ var leave_request_create_vm= new Vue({
             'duration':'',
             'startDate':'',
             'endDate':'',
+            'returnDate':'',
             'comments':'',
             'address':'',
             'telephone':''
@@ -20,7 +21,52 @@ var leave_request_create_vm= new Vue({
 
 
     },
+    mounted: function () {
+        $("#calendar").fullCalendar({
+            header:{
+                left:'prev',
+                center:'title',
+                right:'next'
+            },
+            events: '/api/calendar/holidays',
+            dayClick: function(date, jsEvent, view) {
+                leave_request_create_vm.leave_request.startDate=date.format();
+               // alert('Clicked on: ' + date.format());
+                $("#modal-calendar").modal('hide');
+
+                // change the day's background color just for fun
+              //  $(this).css('background-color', 'red');
+
+            }
+        });
+        $('#modal-calendar').on('shown.bs.modal', function () {
+            $("#calendar").fullCalendar('render');
+        });
+    },
+    watch: {
+
+        'leave_request.duration': function (newValue) {
+         var data={
+             "date": this.leave_request.startDate,
+             "duration": newValue
+         }
+
+            this.$http.get('/api/calendar/next?duration='+data.duration+'&date='+data.date,{emulateJSON:true}).then((response) => {
+                this.leave_request.endDate=response.data.endDate;
+                this.leave_request.returnDate=response.data.returnDate;
+            },(response) => {
+
+              
+            }); 
+        }
+    },
+    
     methods:{
+        showCalendar: function () {
+            $("#modal-calendar").modal('show');
+
+
+        },
         showAddLeaveSettingsModal: function () {
             $("#add-leave-settings-modal").modal('show');
         },
@@ -65,5 +111,23 @@ var leave_request_create_vm= new Vue({
             });
             
         }
+    },
+    computed:{
+        startDate: function () {
+            return moment(this.leave_request.startDate).format('dddd  Do MMMM  YYYY');
+
+
+        },
+        endDate: function () {
+            return moment(this.leave_request.endDate).format('dddd  Do MMMM  YYYY');
+
+        },
+        returnDate: function () {
+            return moment(this.leave_request.returnDate).format('dddd  Do MMMM  YYYY');
+
+        }
+
+
+
     }
 });

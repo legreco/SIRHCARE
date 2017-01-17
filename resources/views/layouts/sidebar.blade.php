@@ -54,7 +54,7 @@
 
            @include('layouts.sidebar_menus.leave')
            @include('layouts.sidebar_menus.performance')
-
+            @include('layouts.sidebar_menus.importations')
 
 
             <!-- Optionally, you can add icons to the links -->

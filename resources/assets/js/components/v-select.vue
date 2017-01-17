@@ -13,7 +13,7 @@
 
 export default {
 
-    props:['url'],
+    props:['url','default_item'],
     data () {
       return {
         options: [],
@@ -72,6 +72,8 @@ export default {
 
     this.getOptions();
 
+    if(this.default!=null)
+    this.item=default_item;
 
     }
   }

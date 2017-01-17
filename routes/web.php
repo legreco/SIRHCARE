@@ -96,16 +96,14 @@ Route::get('leaveRequests/myRequests','LeaveRequestController@getEmployeeLeaveRe
 Route::resource('leaveRequest','LeaveRequestController');
 Route::get('org_charts','Web\OrgChartController@index');
 Route::resource('countries','Web\CountryController');
+Route::resource('financial_data','Web\FinancialDataController');
+Route::resource('exchange_rates','Web\ExchangeRateController');
 
 Route::get('/test', function()
 {
-    $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
-    $beautymail->send('emails.welcome', [], function($message)
-    {
-        $message
-            ->to('cherymacgrecoperalte@gmail.com', 'John Smith')
-            ->subject('LEAVE REQUEST');
-    });
+
+  return  \App\Helpers\CalendarHelper::addBusinessDays('2017-01-03',5);
+
 
 });
 Route::resource('leave_types','Web\LeaveTypeController');

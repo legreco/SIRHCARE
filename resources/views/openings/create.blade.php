@@ -21,18 +21,34 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form class="form" method="post" action="/openings">
+                <form class="form-horizontal" method="post" action="/openings">
                     <div class="box-body">
 
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="form-group">
-                            <label>Code</label>
-                            <input type="text"  name="name" class="form-control"  placeholder="Titre de la position">
+                            <label class="col-sm-4 control-label">Code</label>
+                            <div class="col-sm-8">
+                                <input type="text"  name="name" class="form-control"  placeholder="Titre de la position">
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Position</label>
+                            <div class="col-sm-8">
+                                <input type="text"  name="name" class="form-control"  placeholder="Titre de la position">
+                            </div>
+
                         </div>
                         <div class="form-group">
-                            <label>Position</label>
-                            <select name="position_id" id="position" style="width: 100%;"></select>
+                            <label class="col-sm-4 control-label">Nbre de poste</label>
+                            <div class="col-sm-8">
+                                <input type="text"  name="name" class="form-control"  placeholder="Titre de la position">
+                            </div>
+
                         </div>
+
+
 
                         <div class="form-group">
                             <label>Nombre d'emploi</label>

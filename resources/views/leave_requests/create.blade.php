@@ -1,4 +1,8 @@
 @extends('layouts.app')
+@section('css')
+    <link href="{{ asset("/bower_components/fullcalendar/fullcalendar.min.css")}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset("/bower_components/fullcalendar/fullcalendar.print.css")}}" rel="stylesheet" type="text/css" media="print" />
+    @endsection
 @section('content-header')
     <h1>Gestion des congés<small>Nouvelle demande</small></h1>
 @endsection
@@ -63,11 +67,14 @@
                                     </div>
 
                         <div class="form-group">
-                            <label class="col-sm-4 control-label">Date départ</label>
+                            <label class="col-sm-4 control-label">Premier jour congé</label>
 
                             <div class="form-group">
                                 <div class="col-sm-4">
-                                    <input type="date" v-model="leave_request.startDate" class="form-control pull-right">
+                                    <input type="text" v-model="startDate"  class="form-control pull-right" readonly>
+                                </div>
+                                <div class="col-sm-1">
+                                    <button class="btn btn-flat btn-default" v-on:click.prevent="showCalendar"><i class="fa fa-calendar"></i> </button>
                                 </div>
 
 
@@ -80,7 +87,7 @@
 
                             <div class="form-group">
                                 <div class="col-sm-4">
-                                    <input type="text" name="startDate" class="form-control" readonly>
+                                    <input type="text" v-model="endDate" class="form-control" readonly>
                                 </div>
 
 
@@ -93,7 +100,7 @@
 
                             <div class="form-group">
                                 <div class="col-sm-4">
-                                    <input type="text" name="startDate" class="form-control" readonly>
+                                    <input type="text" v-model="returnDate" class="form-control" readonly>
                                 </div>
 
 
@@ -157,14 +164,18 @@
                 </form>
             </div>
             <!-- /.box -->
+        @include('leave_requests.modal_calendar')
 </div>
     <div class="col-md-3">
 
     </div>
+
 </div>
 
 @endsection
 @section('script')
-    <script src="{{ asset ("/js/leave_requests/create.js") }}" type="text/javascript"></script>
+    <script src="{{asset("/bower_components/fullcalendar/fullcalendar.min.js") }}" type="text/javascript"></script>
+
+   <script src="{{ asset ("/js/leave_requests/create.js") }}" type="text/javascript"></script>
 
 @endsection

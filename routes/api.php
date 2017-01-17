@@ -49,5 +49,7 @@ Route::get('select/funds/active','Api\Select\ActiveFunds');
 Route::get('select/business_units/active','Api\Select\ActiveBusinessUnits');
 Route::get('select/fund/{id}/projects/active','Api\Select\ActiveFundProjects');
 Route::get('select/source_types/active','Api\Select\ActiveSourceTypes');
+Route::get('calendar/holidays','Api\CalendarController@Holidays');
 Route::resource('departments','Api\DepartmentController');
 Route::resource('holiday_lists','Api\HolidayListController');
+Route::get('calendar/next','Api\CalendarController@nextBusinessDay');
