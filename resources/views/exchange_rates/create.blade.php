@@ -31,6 +31,12 @@
                            <v-select url="/api/select/currencies"></v-select>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Monnaie d'entrée 2</label>
+                            <div class="col-sm-6">
+                                <v-select url="/api/select/currencies"></v-select>
+                            </div>
+                        </div>
 
 
                         <div class="form-group">

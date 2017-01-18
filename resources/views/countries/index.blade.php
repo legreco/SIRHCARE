@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content-header')
-    <h1>Liste des Pays</h1>
+    <h1><i class="fa fa-globe"></i> Liste des Pays</h1>
 @endsection
 
 @section('content')

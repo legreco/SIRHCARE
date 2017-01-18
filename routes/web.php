@@ -13,55 +13,24 @@
 
 Route::get('/excel', function () {
 
-    \Maatwebsite\Excel\Facades\Excel::load(base_path().'/database/seeds/csv/employees.csv', function($reader) {
+    \Maatwebsite\Excel\Facades\Excel::load(base_path() . '/database/seeds/excel/banks.xlsx', function ($reader) {
 
         // Loop through all sheets
-       // $reader->dd();
+        // $reader->dd();
         // Loop through all sheets
+        $array = $reader->toArray();
 
+        foreach ($array as $row) {
 
-        $array =$reader->toArray();
-       // dump($array);
-        foreach ( $array as $row) {
-
-
+            $bank = new \App\Bank();
             //
-            $employeeCode=$row['employeeId'];
-            $employee= \App\Employee::Where('employeeId','=',$employeeCode);
 
-            $employee->birthDate=$row['birthDate'];
-            $employee->cinOrNif=$row['cinOrNif'];
-
-            $contract= new \App\Contract();
-            $contract->salary=$row['salary'];
-            $contract->grade=$row['salary'];
-            $contract->start=$row['salary'];
-
-
-            $position= new \App\Position();
-            $position->name=$row['position'];
-
-
-            $allocation= new \App\Allocation();
-
-
-            $department= new \App\Department();
-
-            $employee->lastName=$row['salary'];
-            $employee->firstName=$row['firstname'];
-            $employee->employeeId=$row['employeeid'];
-            $employee->save();
+            $bank->name = $row['name'];
+            $bank->code = $row['code'];
+            $bank->description = $row['description'];
+            $bank->save();
 
         }
-
-
-
-
-       /* $reader->each(function($row) {
-
-
-
-        });*/
 
 
     });
