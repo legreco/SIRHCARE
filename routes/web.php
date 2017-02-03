@@ -10,33 +10,51 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
+Route::get('pars/submitted','Web\ParController@submitted');
+Route::get('pars/drafts','Web\ParController@drafts');
+Route::post('pars/save','Web\ParController@save');
 Route::get('/excel', function () {
+    //
+    $path=base_path() . '/database/seeds/excel/funds.xlsx';
+    \Maatwebsite\Excel\Facades\Excel::selectSheets('FUND_CODES')->load($path, function ($sheet) {
+        $fc=Collect([]);
+        $sheet->each(function($row) use($fc) {
 
-    \Maatwebsite\Excel\Facades\Excel::load(base_path() . '/database/seeds/excel/banks.xlsx', function ($reader) {
 
-        // Loop through all sheets
-        // $reader->dd();
-        // Loop through all sheets
-        $array = $reader->toArray();
+            if($fc->isEmpty() or !$fc->contains($row['fc']))
+            {
+                $fund= new \App\Fund();
+                $fund->id = $row['fc'];
+                $fund->name = $row['fc'];
+                //error_log('Some message here.');
+                $fund->save();
+                $fc->push($row['fc']);
+              //  dump($fc);
 
-        foreach ($array as $row) {
+            }
 
-            $bank = new \App\Bank();
-            //
+        });
+        $sheet->each(function($row) use($fc) {
 
-            $bank->name = $row['name'];
-            $bank->code = $row['code'];
-            $bank->description = $row['description'];
-            $bank->save();
 
-        }
+          $project=new \App\Project();
+            $project->id=$row['pid'];
+            $project->name=$row['pid'];
+            $project->fund_id=$row['fc'];
+            $project->description=$row['description'];
+            $project->startDate=$row['pid_start_date'];
+            $project->endDate=$row['pid_end_date'];
+            $project->save();
+            
+
+        });
+
 
 
     });
 
-
 });
+Route::get('images/{name}','Web\ImageController@show');
 Route::get('holiday_list/{id}/apply','Web\HolidayListController@apply');
 Auth::routes();
 Route::resource('languages','Web\LanguageController');
@@ -67,7 +85,7 @@ Route::get('org_charts','Web\OrgChartController@index');
 Route::resource('countries','Web\CountryController');
 Route::resource('financial_data','Web\FinancialDataController');
 Route::resource('exchange_rates','Web\ExchangeRateController');
-
+Route::resource('notice_periods','Web\NoticePeriodController');
 Route::get('/test', function()
 {
 
@@ -75,7 +93,7 @@ Route::get('/test', function()
 
 
 });
-Route::resource('leave_types','Web\LeaveTypeController');
+Route::resource('leaves/types','Web\LeaveTypeController');
 Route::get('/currencies','Web\CurrencyController@index');
 Route::get('days','Web\DayController@index');
 Route::resource('contracts','Web\ContractController');

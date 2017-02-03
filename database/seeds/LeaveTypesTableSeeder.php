@@ -13,18 +13,19 @@ class LeaveTypesTableSeeder extends Seeder
     {
         //
          DB::table('leave_types')->insert([
+             'id'=>'AL',
             'name' => 'Congé annuel',
-            'code' =>'AL',
             'created_at'=>Carbon::now(),
         ]);
         DB::table('leave_types')->insert([
+            'id' =>'SL',
             'name' => 'Congé maladie',
-            'code' =>'SL',
+           
             'created_at'=>Carbon::now(),
         ]);
         DB::table('leave_types')->insert([
             'name' => 'Congé urgence',
-            'code' =>'UL',
+            'id' =>'UL',
             'created_at'=>Carbon::now(),
         ]);
     }

@@ -28,13 +28,8 @@
                         <div class="form-group">
                             <label class="col-sm-4 control-label">Monnaie d'entrée</label>
                             <div class="col-sm-6">
-                           <v-select url="/api/select/currencies"></v-select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label">Monnaie d'entrée 2</label>
-                            <div class="col-sm-6">
-                                <v-select url="/api/select/currencies"></v-select>
+                        {{--   <v-select url="/api/select/currencies"></v-select>--}}
+                                <m-select url="/api/select/currencies"></m-select>
                             </div>
                         </div>
 
@@ -42,7 +37,7 @@
                         <div class="form-group">
                             <label class="col-sm-4 control-label">Monnaie de sortie</label>
                             <div class="col-sm-6">
-                                <v-select url="/api/select/currencies"></v-select>
+                                <m-select url="/api/select/currencies"></m-select>
                             </div>
                         </div>
 

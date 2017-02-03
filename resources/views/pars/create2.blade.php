@@ -1,11 +1,4 @@
 @extends('layouts.app')
-@section('content-header')
-<h1>Nouveau PAR</h1>
-@endsection
-@section('css')
-    <link href="{{ asset("/bower_components/AdminLTE/plugins/select2/select2.css")}}" rel="stylesheet" type="text/css" />
-@endsection
-
 @section('content')
 
 <style id="PAR IT_Septembre16_Mac Greco Peralte (2)_3272_Styles">
@@ -177,7 +170,7 @@
         mso-protection:locked hidden;
         white-space:nowrap;}
     .xl723272
-    {padding:0px;
+    {padding:0px
         mso-ignore:padding;
         color:windowtext;
         font-size:10.0pt;
@@ -2204,11 +2197,10 @@ tags will be replaced.-->
 <!--START OF OUTPUT FROM EXCEL PUBLISH AS WEB PAGE WIZARD -->
 <!----------------------------->
 
-<div id="PAR IT_Septembre16_Mac Greco Peralte (2)_3272" align=center
-     x:publishsource="Excel">
-    <form class="form" method="post" action="/par">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-    <table border=0 cellpadding=0 cellspacing=0 width=1229 class=xl655353272
+<div class="row" id="create_par_vue" align="center">
+
+
+    <table border=0 cellpadding=0 cellspacing=0 width=1229 class="xl655353272 table-hover"
            style='border-collapse:collapse;table-layout:fixed;width:922pt'>
         <col class=xl655353272 width=88 style='mso-width-source:userset;mso-width-alt:
  3218;width:66pt'>
@@ -2349,8 +2341,8 @@ tags will be replaced.-->
                 Developer Intern</td>
             <td colspan=4 class=xl1503272 style='border-right:.5pt solid black;
   border-left:none'>CARE</td>
-            <td colspan=4 class=xl1543272 style='border-right:1.0pt solid black'>September
-                2016</td>
+            <td colspan=4 class=xl1543272 style='border-right:1.0pt solid black'>
+                <input type="month" class="par_input"/></td>
         </tr>
         <tr height=21 style='height:15.75pt'>
             <td height=21 class=xl1413272 style='height:15.75pt'>PART II</td>
@@ -2422,66 +2414,40 @@ tags will be replaced.-->
                 Employee ID, etc</td>
             <td class=xl773272 width=5 style='border-left:none;width:4pt'>&nbsp;</td>
         </tr>
-        @for($i=0; $i<8;$i++)
-        <tr height=26 style='mso-height-source:userset;height:20.1pt'>
-            <td height=26 class=xl1293272 style='height:20.1pt;border-top:none'><input type="text"  name="DeptID{{$i}}" class="par_input" value="HT-SPC"></td>
+
+        <tr v-for="(par_line, index) in par_lines" height=26 style='mso-height-source:userset;height:20.1pt'>
+            <td height=26 class=xl1293272 style='height:20.1pt;border-top:none'><input type="text"   class="par_input" value="HT-SPC"></td>
             <td class=xl1293272 style='border-top:none;border-left:none'>
-                    <select name="FundCode{{$i}}" class="par_input">
-                        <option value="1">VUS25U</option>
-                        <option value="2">US25V</option>
-                        <option value="3">US25W</option>
-                        <option value="4">US25Y</option>
-                    </select></td>
+                   </td>
             <td class=xl1293272 style='border-top:none;border-left:none'>
-                <select name="BusUnit{{$i}}" class="par_input">
-                    <option value="HTI01">HTI01</option>
-                    <option value="HTI02">HTI02</option>
-                    <option value="HTI03">HTI03</option>
-                    <option value="HTI04">HTI04</option>
-                </select></td>
+              </td>
 
             </td>
             <td class=xl1293272 style='border-top:none;border-left:none'>
-                <select name="ProjetId{{$i}}" class="par_input">
-                    <option value="1">UFFPHT0017</option>
-                    <option value="2">UFFPHT0018</option>
-                    <option value="3">UFFPHT0019</option>
-                    <option value="4">UFFPHT0020</option>
-                </select>
+
             </td>
             <td class=xl1293272 style='border-top:none;border-left:none'>
-                <select name="ActivityID{{$i}}" class="par_input">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                </select>
+
             <td class=xl1293272 style='border-top:none;border-left:none'>
-                <select name="SourceType{{$i}}" class="par_input">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
+
             </td>
             <td class=xl1303272 style='border-top:none;border-left:none'>
                 <input type="text"  class="par_input" value="00220">
             </td>
             <td class=xl1373272 align=center style='border-top:none'>
-                <input type="text"  class="par_input" value="10" >
+                <input type="number"  class="par_input" value="10" >
             </td>
             <td class=xl1383272 align=center style='border-top:none;border-left:none'>
-                <input type="text"  class="par_input" value="10" >
+                <input type="number"  class="par_input" value="10" >
             </td>
             <td class=xl1383272 align=center style='border-top:none;border-left:none'>
-                <input type="text"  class="par_input" value="10" >
+                <input type="number"  class="par_input" value="10" >
             </td>
             <td class=xl1383272 align=center style='border-top:none;border-left:none'>
-                <input type="text"  class="par_input" value="10" >
+                <input type="number"  class="par_input" value="10" >
             </td>
             <td class=xl1383272 align=center style='border-top:none;border-left:none'>
-                <input type="text"  class="par_input" value="10" >
+                <input type="number"  class="par_input" value="10" >
             </td>
             <td class=xl1143272 align=center style='border-top:none;border-left:none'>
                 176.00
@@ -2491,7 +2457,7 @@ tags will be replaced.-->
                 <input type="text"  class="par_input" value="0.00%">
             </td>
         </tr>
-        @endfor
+
 
 
 
@@ -2774,40 +2740,9 @@ tags will be replaced.-->
 
 
 
-        <div class="row">
-
-            <div class="col-md-12">
-<div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title pull-left">Actions</h3>
-                </div>
-                <!-- /.box-header -->
-
-                    <div class="box-body">
-                        <div class="col-md-3">
-                        <button class="btn btn-flat btn-block btn-info "> <i class="glyphicon glyphicon-save pull-left"></i>Sauvegarder</button>
-                          </div>
-                        <div class="col-md-3">
-                            <button class="btn btn-flat btn-block btn-primary "> <i class="glyphicon glyphicon-send pull-left"></i>Soumettre</button>
-                        </div>
-                        <div class="col-md-3">
-                            <button class="btn btn-flat btn-block btn-success"><i class="glyphicon glyphicon-ok pull-left"></i> Valider</button>
-                        </div>
-                        <div class="col-md-3">
-                            <button type="button" class="btn btn-flat btn-block btn-danger "><i class="glyphicon glyphicon-remove pull-left"></i>Rejeter</button>
-
-                        </div>
-
-                    </div>
-                    <!-- /.box-body -->
-
-</div>
 
 
 
-            </div>
-        </div>
-</form>
 </div>
 
 
@@ -2816,26 +2751,6 @@ tags will be replaced.-->
 <!----------------------------->
 @endsection
 @section('script')
-    <script src="{{ asset ("/bower_components/AdminLTE/plugins/select2/select2.min.js") }}" type="text/javascript"></script>
-    <script>
+    <script src="{{asset("/js/pars/create.js") }}" type="text/javascript"></script>
 
-        $("#select2").select2({
-            ajax: {
-                dataType: 'json',
-                url: '{{ url("funds/active/list") }}',
-                delay: 400,
-                data: function(params) {
-                    return {
-                        term: params.term
-                    }
-                },
-                processResults: function (data, page) {
-                    return {
-                        results: data
-                    };
-                },
-            }
-        });
-
-    </script>
 @endsection

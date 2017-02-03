@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class LeaveType extends Model
 {
     //
+    public $incrementing=false;
     
     public function leave_accounts()
     {

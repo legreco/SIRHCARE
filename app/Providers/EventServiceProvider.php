@@ -24,6 +24,26 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\LeaveRequestSubmitted' => [
             'App\Listeners\LeaveRequestSubmittedListener',
         ],
+
+        'App\Events\ParSubmitted' => [
+            'App\Listeners\ParSubmittedListener',
+        ],
+
+        'App\Events\ParValidatedBySupervisor' => [
+            'App\Listeners\ParValidatedBySupervisorListener',
+        ],
+
+        'App\Events\RejectedBySupervisor' => [
+            'App\Listeners\ParRejectedBySupervisorListener',
+        ],
+
+        'App\Events\ParValidatedByPayroll' => [
+            'App\Listeners\ParValidatedByPayrollListener',
+        ],
+
+        'App\Events\ParRejectedByPayroll' => [
+            'App\Listeners\ParRejectedByPayrollListener',
+        ],
     ];
 
     /**

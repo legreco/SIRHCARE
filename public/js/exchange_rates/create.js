@@ -4,20 +4,25 @@
 
 
 var exchange_rate_create_vm =new Vue({
-
     el:'#exchange_rate_create_vue',
     data:{
-       
+        value: { name: 'Vue.js', language: 'JavaScript' },
+        options: [
+            { name: 'Vue.js', language: 'JavaScript' },
+            { name: 'Rails', language: 'Ruby' },
+            { name: 'Sinatra', language: 'Ruby' },
+            { name: 'Laravel', language: 'PHP' },
+            { name: 'Phoenix', language: 'Elixir' }
+        ]
        
 
     },
 
 
 
-
     mounted: function(){
 
-        this.positions.push(this.new_position);
+       // this.positions.push(this.new_position);
 
     },
 

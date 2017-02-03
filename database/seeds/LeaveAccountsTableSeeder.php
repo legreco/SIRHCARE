@@ -18,20 +18,20 @@ class LeaveAccountsTableSeeder extends Seeder
 
         $leaveAccount=new LeaveAccount();
         $leaveAccount->balance=15;
-        $leaveAccount->leave_type_id=1;
+        $leaveAccount->leave_type_id='AL';
         $employee->leave_accounts()->save($leaveAccount);
 
 
         $leaveAccount=new LeaveAccount();
         $leaveAccount->balance=15;
-        $leaveAccount->leave_type_id=2;
+        $leaveAccount->leave_type_id='SL';
         $employee->leave_accounts()->save($leaveAccount);
 
 
 
         $leaveAccount=new LeaveAccount();
         $leaveAccount->balance=15;
-        $leaveAccount->leave_type_id=3;
+        $leaveAccount->leave_type_id='UL';
         $employee->leave_accounts()->save($leaveAccount);
 
 
@@ -39,36 +39,36 @@ class LeaveAccountsTableSeeder extends Seeder
 
         $leaveAccount=new LeaveAccount();
         $leaveAccount->balance=15;
-        $leaveAccount->leave_type_id=1;
+        $leaveAccount->leave_type_id='AL';
         $employee->leave_accounts()->save($leaveAccount);
      
 
         $leaveAccount=new LeaveAccount();
         $leaveAccount->balance=15;
-        $leaveAccount->leave_type_id=2;
+        $leaveAccount->leave_type_id='SL';
         $employee->leave_accounts()->save($leaveAccount);
 
         $leaveAccount=new LeaveAccount();
         $leaveAccount->balance=15;
-        $leaveAccount->leave_type_id=3;
+        $leaveAccount->leave_type_id='UL';
         $employee->leave_accounts()->save($leaveAccount);
 
         $employee=Employee::where('firstName','=','Toto')->first();
 
         $leaveAccount=new LeaveAccount();
         $leaveAccount->balance=15;
-        $leaveAccount->leave_type_id=1;
+        $leaveAccount->leave_type_id='AL';
         $employee->leave_accounts()->save($leaveAccount);
 
 
         $leaveAccount=new LeaveAccount();
         $leaveAccount->balance=15;
-        $leaveAccount->leave_type_id=2;
+        $leaveAccount->leave_type_id='SL';
         $employee->leave_accounts()->save($leaveAccount);
 
         $leaveAccount=new LeaveAccount();
         $leaveAccount->balance=15;
-        $leaveAccount->leave_type_id=3;
+        $leaveAccount->leave_type_id='UL';
         $employee->leave_accounts()->save($leaveAccount);
         
      

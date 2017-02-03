@@ -1,80 +1,71 @@
-<div class="modal fade" id="myModal">
+<div class="modal fade" id="add-par-line-modal">
     <div class="modal-dialog" >
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Nouvelle ligne</h4>
+                <h4 class="modal-title"><i class="fa fa-plus fa-2x"></i> Nouvelle ligne</h4>
             </div>
-            <form class="form" method="post" action="/permission" id="my-modal-form">
+            <form class="form-horizontal">
                 <div class="modal-body">
 
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-group">
-                        <label>Dept ID</label>
-                        <input type="text"  name="display_name" class="form-control"  placeholder="Nom de la permission">
+                        <label class="control-label col-sm-4">Dept ID</label>
+                        <div class="col-sm-6">
+                            <m-select url="/api/select/dept_ids" v-on:new_value="new_par_line.deptId=arguments[0]" :reset="reset"></m-select>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label>Fund Code</label>
-                        <input type="text" name="name" class="form-control"  placeholder="Code de la permission">
+                        <label class="control-label col-sm-4">Fund Code</label>
+                        <div class="col-sm-6">
+                            <m-select url="/api/select/funds" v-on:new_value="new_par_line.fundCode=arguments[0]" :reset="reset"></m-select>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <label>Business Unit</label>
-                        <input type="text" name="name" class="form-control"  placeholder="Code de la permission">
+                        <label class="control-label col-sm-4">Business Unit</label>
+                        <div class="col-sm-6">
+                            <m-select url="/api/select/business_units" v-on:new_value="new_par_line.businessUnit=arguments[0]" :reset="reset"></m-select>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label>Project ID</label>
-                        <input type="text" name="name" class="form-control"  placeholder="Code de la permission">
+                        <label class="control-label col-sm-4">Project Id</label>
+                        <div class="col-sm-6">
+                            <m-select url="/api/select/projects" v-on:new_value="new_par_line.projectId=arguments[0]" :reset="reset"></m-select>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label>	Activity</label>
-                        <input type="text" name="name" class="form-control"  placeholder="Code de la permission">
+                        <label class="control-label col-sm-4">Activity</label>
+                        <div class="col-sm-6">
+                            <m-select url="/api/select/funds" v-on:new_value="new_par_line.activity=arguments[0]" :reset="reset"></m-select>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label>Source Type</label>
-                        <input type="text" name="name" class="form-control"  placeholder="Code de la permission">
+                        <label class="control-label col-sm-4">Source Type</label>
+                        <div class="col-sm-6">
+                            <m-select url="/api/select/source_types" v-on:new_value="new_par_line.sourceType=arguments[0]" :reset="reset"></m-select>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label>Category</label>
-                        <input type="text" name="name" class="form-control"  placeholder="Code de la permission">
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label>Week 1</label>
-                                <input type="text" name="name" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label>Week 2</label>
-                                <input type="text" name="name" class="form-control" >
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label>Week 3</label>
-                                <input type="text" name="name" class="form-control"  >
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label>Week 4</label>
-                                <input type="text" name="name" class="form-control"  >
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label>Week 5</label>
-                                <input type="text" name="name" class="form-control" >
-                            </div>
+                        <label class="control-label col-sm-4">Category</label>
+                        <div class="col-sm-6">
+                            <m-select url="/api/select/funds" v-on:new_value="new_par_line.fundCode=arguments[0]" :reset="reset"></m-select>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Annuler</button>
-                    <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <button class="btn btn-block btn-danger" data-dismiss="modal">Annuler</button>
+                        </div>
+                        <div class="col-md-4">
+
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-block btn-success" v-on:click.prevent="addParLine">Sauvegarder</button>
+                        </div>
+                    </div>
+
                 </div>
             </form>
         </div>

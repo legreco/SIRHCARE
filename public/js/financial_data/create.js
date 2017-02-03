@@ -4,7 +4,6 @@
 
 
 var financial_data_create_vm =new Vue({
-
     el:'#financial_data_create_vue',
     data:{
         fin_data:{
@@ -37,7 +36,27 @@ var financial_data_create_vm =new Vue({
 
     methods : {
         removeLine: function (index) {
-            this.fin_data.lines.splice(index,1);
+
+            swal({
+                    title: "Confirmez la suppression",
+                    text: "Vous allez supprimez",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Confirmer",
+                    cancelButtonText: "Annuler",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                },
+                function(isConfirm){
+                    if (isConfirm) {
+                        financial_data_create_vm.fin_data.lines.splice(index,1);
+                        swal("Supprimée", "La ligne a été supprimée", "success");
+                    } else {
+                        swal("Cancelled", "Your imaginary file is safe :)", "error");
+                    }
+                });
+
 
         },
         editLine: function () {

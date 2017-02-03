@@ -11,7 +11,7 @@
                         <div class="form-group">
                             <label class="col-sm-4 control-label">Dept ID</label>
                             <div  class="col-sm-6">
-                                <v-select url="/api/select/dept_ids/active" v-on:new_select="new_line.deptId=arguments[0]"></v-select>
+                                <m-select url="/api/select/funds/active" ></m-select>
                             </div>
                         </div>
                 <div class="form-group">

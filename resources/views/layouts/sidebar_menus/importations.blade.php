@@ -5,7 +5,7 @@
         <i class="fa fa-angle-left pull-right"></i>
     </a>
     <ul class="treeview-menu ">
-        <li><a href="{{ url('/leaveRequest') }}"><i class="fa fa-circle-o"></i> Toutes les demandes</a></li>
+        <li><a href="{{ url('/leaveRequest') }}"><i class="fa fa-circle-o"></i>Employées</a></li>
         <li><a href="{{ url('leaveRequests/myRequests') }}"><i class="fa fa-circle-o"></i>Mes demandes</a></li>/
         <li><a href="{{ url('/leaveRequest/create') }}"><i class="fa fa-circle-o"></i> Formulaire de demande</a></li>
 

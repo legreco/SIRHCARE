@@ -46,7 +46,6 @@ class EmployeesTableSeeder extends Seeder
         $faker = Faker\Factory::create();
         //
         $employee1= new Employee();
-        $employee1->title_id=1;
         $employee1->employeeId='2046';
         $employee1->categoryId='3344';
         $employee1->country_id=1;
@@ -62,7 +61,6 @@ class EmployeesTableSeeder extends Seeder
 
 
         $employee2= new Employee();
-        $employee2->title_id=1;
         $employee2->employeeId='2047';
         $employee2->categoryId='3345';
         $employee2->firstName='Toto Sup';
@@ -77,7 +75,6 @@ class EmployeesTableSeeder extends Seeder
 
 
         $employee3= new Employee();
-        $employee3->title_id=1;
         $employee3->employeeId='2048';
         $employee3->categoryId='3346';
         $employee3->country_id=1;
@@ -99,7 +96,6 @@ class EmployeesTableSeeder extends Seeder
 
         for ($i = 0; $i < $limit; $i++) {
             $employee=New Employee();
-            $employee->title_id=1;
             $employee->employeeId=$faker->unique()->numberBetween(0,100000);
             $employee->categoryId=$faker->unique()->numberBetween(0,100000);
             $employee->firstName=$faker->firstName;

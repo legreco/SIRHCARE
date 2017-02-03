@@ -6,6 +6,7 @@
 @section('content')
     <div class="row" id="leave_types_vue">
         <div class='col-md-1'>
+            <loading></loading>
         </div>
         <div class='col-md-10'>
             <!-- Box -->
@@ -27,12 +28,11 @@
 
                             <th>PAYÉ ?</th>
                             <th>DEDUCTIBLE?</th>
-                            <th>DEMANDEUR</th>
                             <th></th>
                         </tr>
                         <tr v-for="leave_type in leave_types">
                             <td>
-                                @{{ leave_type.code }}
+                                @{{ leave_type.id }}
                             </td>
                             <td>
                                 @{{ leave_type.name }}
@@ -48,8 +48,9 @@
                                 <span v-else> <i class="fa fa-remove" style="color:red;"></i> </span>
                             </td>
                             <td>
-                                <button class="btn btn-sm btn-flat btn-primary"><i class="fa fa-edit"></i></button>
-                                <button class="btn btn-sm btn-flat btn-danger"><i class="fa fa-trash"></i></button>
+                                <button class="btn btn-sm btn-flat btn-warning" style="background: transparent; border: none !important;"><i class="fa fa-edit fa-lg" style="color: #0c0c0c"></i></button>
+                                <button class="btn btn-sm btn-flat" style="background: transparent; border: none !important;"><i class="fa fa-trash fa-lg" style="color:black"></i></button>
+                                <button class="btn btn-sm btn-flat" style="background: transparent; border: none !important;"><i class="fa fa-search fa-lg" style="color: black"></i></button>
                             </td>
                         </tr>
 

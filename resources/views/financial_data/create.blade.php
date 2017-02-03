@@ -7,11 +7,11 @@
 @section('content')
     <div id="financial_data_create_vue">
     <div class="row">
-        <div class=" col-md-2"></div>
-        <div class=" col-md-8">
+        <div class="col-md-2"></div>
+        <div class=" col-md-10">
             <div class="box">
                 <div class="box-body">
-                    <table class="table table-hover table-striped">
+                    <table class="table  table-striped table-hover">
                         <thead>
                         <tr>
                             <th>
@@ -33,9 +33,7 @@
                             <th>
                                 Source Type
                             </th>
-                            <th>
-                                Category
-                            </th>
+
                             <th>
                                 Distribution
                             </th>
@@ -46,32 +44,32 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-if="fin_data.lines.length==0"> sfsfs</tr>
+                      <tr v-if="fin_data.lines.length==0"></tr>
 
                         <tr v-else v-for="(line, index) in fin_data.lines">
                             <td>
-                              @{{ line.deptId.text }}
+                              @{{ line.deptId.name }}
                             </td>
                             <td>
-                             @{{ line.fundCode.text }}
+                             @{{ line.fundCode.name}}
                             </td>
                             <td>
-                              @{{ line.businessUnit.text }}
+                              @{{ line.businessUnit.name }}
                             </td>
                             <td>
-                                @{{ line.projectId.text }}
+                                @{{ line.projectId.name }}
                             </td>
                             <td>
-                                @{{ line.activity.text }}
+                                @{{ line.activity.name }}
                             </td>
                             <td>
-                                @{{ line.sourceType.text }}
+                                @{{ line.sourceType.name }}
                             </td>
                             <td>
-                                @{{ line.category.text }}
+                                @{{ line.category.name }}
                             </td>
                             <td>
-                                @{{ line.distribution }} %
+                                @{{ line.distribution.name }} %
                             </td>
                             <td>
                                 <div class="btn-group-sm">
@@ -99,7 +97,7 @@
                 </div>
             </div>
         </div>
-        <div class=" col-md-2"></div>
+
 
 
 

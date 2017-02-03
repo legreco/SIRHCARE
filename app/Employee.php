@@ -49,9 +49,10 @@ protected $hidden=['title','gender'];
             return 40;
         }
     }
-    public function title()
+   
+    public function pars()
     {
-        return $this->belongsTo('App\Title');
+        return $this->hasMany('App\Par');
     }
 
     public function user()

@@ -11,7 +11,6 @@ var leave_types_vn =new Vue({
     mounted : function() {
        this.fetchLeaveTypes();
     },
-
     methods : {
         fetchLeaveTypes: function () {
             this.$http.get('/api/leave_types')

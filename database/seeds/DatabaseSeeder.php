@@ -13,6 +13,8 @@ class DatabaseSeeder extends Seeder
     {
 
         // Basics Tables
+        $this->call(BanksTableSeeder::class);
+        $this->call(FinancialCodificationsTablesSeeder::class);
          $this->call(HolidayListsTableSeeder::class);
          $this->call(EducationLevelsTableSeeder::class);
          $this->call(LanguagesTableSeeder::class);
@@ -21,11 +23,6 @@ class DatabaseSeeder extends Seeder
          $this->call(HolidayTypesTableSeeder::class);
          $this->call(AllDatesTableSeeder::class);
          $this->call(CalendarYearsTableSeeder::class);
-        $this->call(SourceTypesTableSeeder::class);
-        $this->call(BusinessUnitsTableSeeder::class);
-        $this->call(FundsTableSeeder::class);
-        $this->call(ProjectsTableSeeder::class);
-        $this->call(DeptIdsTableSeeder::class);
         $this->call(ContractTypesTableSeeder::class);
         $this->call(SalaryPeriodsTableSeeder::class);
         $this->call(DaysTableSeeder::class);
@@ -48,5 +45,6 @@ class DatabaseSeeder extends Seeder
         $this->call(LeaveAccountsTableSeeder::class);
         $this->call(ContractStatusesTableSeeder::class);
         $this->call(PositionsTableSeeder::class);
+        $this->call(ExchangeRatesTableSeeder::class);
     }
 }

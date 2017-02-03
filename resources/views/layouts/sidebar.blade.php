@@ -59,6 +59,7 @@
 
             <!-- Optionally, you can add icons to the links -->
            @include('layouts.sidebar_menus.settings')
+            @include('layouts.sidebar_menus.leave_settings')
 
             <li class="treeview ">
                 <a href="#">
