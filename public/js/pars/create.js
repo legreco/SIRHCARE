@@ -166,6 +166,17 @@ var create_par_vm =new Vue({
 
 
     computed:{
+        totalWeek1: function () {
+    var totalWeek1=0;
+            for(var i=0; i<this.par_lines.length; i++)
+            {
+                totalWeek1=totalWeek1+par_lines[i].week1;
+            }
+
+
+            return totalWeek1;
+
+        }
       
     }
 

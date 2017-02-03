@@ -44,8 +44,25 @@ var create_par_vm =new Vue({
             'week2':0,
             'week3':0,
             'week4':0,
-            'week5':0
+            'week5':0,
+            'distribution':0
         },
+        empty_par_line:{
+            'deptId':'',
+            'fundCode':'',
+            'businessUnit':'',
+            'projectId':'',
+            'activity':'',
+            'sourceType':'',
+            'week1':0,
+            'week2':0,
+            'week3':0,
+            'week4':0,
+            'week5':0,
+            'distribution':0
+        },
+
+
         edit_par_line:{
             'deptId':'',
             'fundCode':'',
@@ -53,11 +70,11 @@ var create_par_vm =new Vue({
             'projectId':'',
             'activity':'',
             'sourceType':'',
-            'week1':'',
-            'week2':'',
-            'week3':'',
-            'week4':'',
-            'week5':''
+            'week1':'0',
+            'week2':'0',
+            'week3':'0',
+            'week4':'0',
+            'week5':'0'
         }
 
 
@@ -97,10 +114,14 @@ var create_par_vm =new Vue({
         totalWeek: function (par_line) {
             return par_line.week1+par_line.week2+par_line.week3+par_line.week4+par_line.week5;
         },
+        distribution_line: function (par_line) {
+            var x=(this.totalWeek(par_line)/this.totalWeekTotal)*100;
+            return x.toFixed(2);
+        },
         showAddParLineModal: function () {
 
             this.reset=true;
-
+            this.new_par_line=JSON.parse(JSON.stringify(this.empty_par_line));
 
             $("#add-par-line-modal").modal('show');
         },
@@ -154,6 +175,65 @@ var create_par_vm =new Vue({
 
 
     computed:{
+        totalWeek1: function () {
+            var totalWeek1=0;
+            for(var i=0; i<this.par_lines.length; i++)
+            {
+                totalWeek1=totalWeek1+this.par_lines[i].week1;
+            }
+
+
+            return totalWeek1;
+
+        },
+        totalWeek2: function () {
+            var totalWeek2=0;
+            for(var i=0; i<this.par_lines.length; i++)
+            {
+                totalWeek2=totalWeek2+this.par_lines[i].week2;
+            }
+
+
+            return totalWeek2;
+
+        },
+        totalWeek3: function () {
+            var totalWeek3=0;
+            for(var i=0; i<this.par_lines.length; i++)
+            {
+                totalWeek3=totalWeek3+this.par_lines[i].week3;
+            }
+
+
+            return totalWeek3;
+
+        },
+        totalWeek4: function () {
+            var totalWeek4=0;
+            for(var i=0; i<this.par_lines.length; i++)
+            {
+                totalWeek4=totalWeek4+this.par_lines[i].week4;
+            }
+
+
+            return totalWeek4;
+
+        },
+        totalWeek5: function () {
+            var totalWeek5=0;
+            for(var i=0; i<this.par_lines.length; i++)
+            {
+                totalWeek5=totalWeek5+this.par_lines[i].week5;
+            }
+
+
+            return totalWeek5;
+
+        },
+        totalWeekTotal: function () {
+
+            return this.totalWeek1+this.totalWeek2+this.totalWeek3+this.totalWeek4+this.totalWeek5;
+        }
 
     }
 

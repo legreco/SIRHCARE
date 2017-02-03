@@ -8,7 +8,14 @@
             </div>
             <form class="form-horizontal">
                 <div class="modal-body">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#menu1">Financial codes</a></li>
+                        <li><a data-toggle="tab" href="#menu2">Worked hours</a></li>
+                        </ul>
 
+                        <div class="tab-content">
+                            <div id="menu1" class="tab-pane fade in active">
+                                <h3></h3>
                     <div class="form-group">
                         <label class="control-label col-sm-4">Dept ID</label>
                         <div class="col-sm-6">
@@ -52,38 +59,53 @@
                             <input type="text"  name="display_name" class="form-control"  placeholder="Nom de la permission">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label>Week 1</label>
-                                <input type="text" name="name" class="form-control">
+                                </div>
+                            <div id="menu2" class="tab-pane fade">
+                                <h3></h3>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Week 1</label>
+                                    <div class="col-sm-4">
+                                        <input type="number" v-model="new_par_line.week1" class="form-control"/>
+                                    </div>
+                                    <div class="col-md-4"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Week 2</label>
+                                    <div class="col-sm-4">
+                                        <input type="number" v-model="new_par_line.week2" class="form-control"/>
+                                    </div>
+                                    <div class="col-md-4"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Week 3</label>
+                                    <div class="col-sm-4">
+                                        <input type="number" v-model="new_par_line.week3" class="form-control"/>
+                                    </div>
+                                    <div class="col-md-4"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Week 4</label>
+                                    <div class="col-sm-4">
+                                        <input type="number" v-model="new_par_line.week4" class="form-control"/>
+                                    </div>
+                                    <div class="col-md-4"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Week 5</label>
+                                    <div class="col-sm-4">
+                                        <input type="number" v-model="new_par_line.week5" class="form-control"/>
+                                    </div>
+                                    <div class="col-md-4"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Distribution</label>
+                                    <div class="col-sm-4">
+                                        <input type="number" v-model="new_par_line.distribution" class="form-control"/>
+                                    </div>
+                                    <div class="col-md-4"></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label>Week 2</label>
-                                <input type="text" name="name" class="form-control" >
                             </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label>Week 3</label>
-                                <input type="text" name="name" class="form-control"  >
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label>Week 4</label>
-                                <input type="text" name="name" class="form-control"  >
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label>Week 5</label>
-                                <input type="text" name="name" class="form-control" >
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <div class="row">
@@ -94,7 +116,7 @@
 
                         </div>
                         <div class="col-md-4">
-                            <button class="btn btn-block btn-success" v-on:click.prevent="addParLine">Sauvegarder</button>
+                            <button class="btn btn-block btn-success" v-on:click.prevent=""><i class="fa fa-check pull-left"></i> Éditer</button>
                         </div>
                     </div>
 
