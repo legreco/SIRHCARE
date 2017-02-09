@@ -1,15 +1,19 @@
 @extends('layouts.app')
 
-@section('css')
-    @include('includes.css.datepicker3')
-    @include('includes.css.select2')
-@endsection
+
 @section('content-header')
-    <h1>Gestion des offres d'emploi<small>Nouvelle offre</small></h1>
+    <h1>
+        Offre d'emploi
+        <small>Nouvel offre d'emploi</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+    </ol>
 @endsection
 
 @section('content')
-    <div class="row">
+    <div class="row" id="create_opening_vue">
 
         <div class="col-md-3"></div>
         <div class="col-md-6">
@@ -21,7 +25,7 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form class="form-horizontal" method="post" action="/openings">
+                <form class="form-horizontal">
                     <div class="box-body">
 
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -36,34 +40,37 @@
                         <div class="form-group">
                             <label class="col-sm-4 control-label">Position</label>
                             <div class="col-sm-8">
-                                <input type="text"  name="name" class="form-control"  placeholder="Titre de la position">
+                               <m-select url="/api/select/positions"></m-select>
                             </div>
 
                         </div>
                         <div class="form-group">
                             <label class="col-sm-4 control-label">Nbre de poste</label>
-                            <div class="col-sm-8">
-                                <input type="text"  name="name" class="form-control"  placeholder="Titre de la position">
+                            <div class="col-sm-2">
+                                <input type="number"  name="name" class="form-control" />
                             </div>
 
                         </div>
 
 
 
-                        <div class="form-group">
-                            <label>Nombre d'emploi</label>
-                            <input type="number"  name="number" class="form-control"  placeholder="Nbre de poste à pourvoir">
-                        </div>
+
 
                         <div class="form-group">
-                            <label>Début</label>
-                            <input type="text"  name="startDate" id="startDate" class="form-control"  placeholder="Date d'ouverture de l'offre">
+                            <label class="col-sm-4 control-label">Début</label>
+                            <div class="col-sm-4">
+                                <input type="date"  class="form-control" />
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Fin</label>
+                            <div class="col-sm-4">
+                                <input type="date"  class="form-control" />
+                            </div>
+
                         </div>
 
-                        <div class="form-group">
-                            <label>Fin</label>
-                            <input type="text"  name="endDate" id="endDate" class="form-control"  placeholder="Date de fin de l'offre">
-                        </div>
 
 
                     </div>
@@ -83,7 +90,5 @@
 
 @endsection
 @section('script')
-    @include('includes.js.datepicker3')
-    @include('includes.js.select2')
     <script src="{{asset("/js/openings/create.js") }}" type="text/javascript"></script>
 @endsection

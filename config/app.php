@@ -168,6 +168,7 @@ return [
         Snowfire\Beautymail\BeautymailServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         'Maatwebsite\Excel\ExcelServiceProvider',
+        Yajra\Datatables\DatatablesServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -238,6 +239,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Excel' => 'Maatwebsite\Excel\Facades\Excel',
         'EmployeeHelper'=>'App\Helpers\EmployeeHelper::class',
+        'Datatables' => Yajra\Datatables\Facades\Datatables::class,
 
     ],
 

@@ -9,9 +9,23 @@ class Employee extends Model
     //
     use UuidTrait;
     public $incrementing = false;
-    protected $fillable=['firstName','lastName','employeeId','categoryId','gender_id','employee_id','cinOrNif','birthDate','email'];
-   protected $appends = ['titleName','age','fullName','sex'];
-protected $hidden=['title','gender'];
+    protected $fillable=[
+        'employeeId',
+        'firstName',
+        'lastName',
+        'country_id',
+        'address',
+        'business_tel',
+        'business_email',
+        'organizational_email',
+        'employeeId',
+        'categoryId',
+        'gender_id',
+        'employee_id',
+        'cinOrNif',
+        'birthDate',
+        'email'];
+   protected $appends = ['age','fullName'];
 
 
     public function getFullNameAttribute()
@@ -19,15 +33,7 @@ protected $hidden=['title','gender'];
         return $this->firstName." ".mb_strtoupper($this->lastName);
     }
 
-    public function getTitleNameAttribute()
-    {
-        return $this->title->name;
-    }
-
-    public function getSexAttribute()
-    {
-        return $this->gender->code;
-    }
+    
 
 
     public function getAgeAttribute()
@@ -110,6 +116,11 @@ protected $hidden=['title','gender'];
     public function country()
     {
         return $this->belongsTo('App\Country');
+    }
+    
+    public function employee_status()
+    {
+        return $this->belongsTo('App\EmployeeStatus');
     }
 
 }

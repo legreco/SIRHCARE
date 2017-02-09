@@ -11,8 +11,10 @@
     <div id="create_position_vue">
     <div class="row" >
 
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8">
         <!-- Horizontal Form -->
             <div class="box box-solid">
                 <div class="box-header with-border">
@@ -26,33 +28,55 @@
                 <!-- form start -->
 
                     <div class="box-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Fonction</label>
+                                <div class="col-sm-8">
+                                    <m-select url="/api/select/fonctions" v-on:new_value="position.fonction=arguments[0]"></m-select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Type de poste</label>
+                                <div class="col-sm-5">
+                                    <m-select url="/api/select/position_types" v-on:new_value="position.position_type=arguments[0]"></m-select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Titre du poste</label>
+                                <div class="col-sm-8">
+                                    <input type="text"  v-model="position.name"  class="form-control"/>
+                                </div>
+                            </div>
 
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <div class="form-group">
-                            <label>Intitulé du poste</label>
-                            <input type="text"  name="name" class="form-control" v-model="position.name"  placeholder="Titre de la position">
-                        </div>
-                        <div class="form-group">
-                            <label>Localization</label>
-                          <v-select url="/api/select/locations" v-on:new_select="position.localization=arguments[0]"></v-select>
-                        </div>
 
-                        <div class="form-group">
-                            <label>Département</label>
-                            <v-select url="/api/select/departments" v-on:new_select="position.department=arguments[0]"></v-select>
-                        </div>
 
-                        <div class="form-group">
-                            <label>Fonction</label>
-                            <v-select url="/api/select/fonctions" v-on:new_select="position.fonction=arguments[0]"></v-select>
-                        </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Département</label>
+                                <div class="col-sm-5">
+                                    <m-select url="/api/select/departments" v-on:new_value="position.department=arguments[0]"></m-select>
+                                </div>
+                            </div>
 
-{{--
-                        <div class="form-group">
-                            <label>Statut</label>
-                            <select name="position_status_id" id="position_status" style="width: 100%;"></select>
-                        </div>--}}
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Lieu d'affectation</label>
+                                <div class="col-sm-5">
+                                    <m-select url="/api/select/locations" v-on:new_value="position.location=arguments[0]"></m-select>
+                                </div>
+                            </div>
 
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Grade</label>
+                                <div class="col-sm-5">
+                                    <m-select url="/api/select/grades" v-on:new_value="position.grade=arguments[0]"></m-select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Dépend de</label>
+                                <div class="col-sm-8">
+                                    <m-select url="/api/select/positions" v-on:new_value="position.position_sup=arguments[0]"></m-select>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <!-- /.box-body -->
 
@@ -61,14 +85,29 @@
             </div>
             <!-- /.box -->
         </div>
-        <div class="col-md-3"></div>
+        <div class="col-md-2">
+            <div class="box box-solid">
+
+                <!-- /.box-header -->
+                <!-- form start -->
+
+                <div class="box-body">
+
+                    <button class="btn btn-block btn-primary" v-on:click.prevent="save"><i class="fa fa-floppy-o fa-lg pull-left"> </i>Sauvegarder </button>
+                </div>
+                <!-- /.box-body -->
+
+                <!-- /.box-footer -->
+
+            </div>
+        </div>
     </div>
 
 
     <div class="row">
 
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
             <!-- Horizontal Form -->
             <div class="box box-solid">
                 <div class="box-header with-border">
@@ -85,7 +124,6 @@
 
 
                     <div class="form-group">
-                        <label>Résumé</label>
                         <textarea class="form-control" rows="5"></textarea>
                     </div>
 
@@ -98,162 +136,11 @@
             </div>
             <!-- /.box -->
         </div>
-        <div class="col-md-3"></div>
-    </div>
-    <div class="row">
-
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <!-- Horizontal Form -->
-            <div class="box box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Éducation et Expérience</h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <!-- /.box-header -->
-                <!-- form start -->
-
-                <div class="box-body">
-
-
-                    <div class="form-group">
-                        <label>Résumé</label>
-                        <v-select url="/api/select/education_levels"></v-select>
-                    </div>
-
-
-                </div>
-                <!-- /.box-body -->
-
-                <!-- /.box-footer -->
-
-            </div>
-            <!-- /.box -->
-        </div>
-        <div class="col-md-3"></div>
-    </div>
-    <div class="row">
-
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <!-- Horizontal Form -->
-            <div class="box box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Résumé du poste</h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <!-- /.box-header -->
-                <!-- form start -->
-
-                <div class="box-body">
-
-
-                    <div class="form-group">
-                        <label>Résumé</label>
-                        <textarea class="form-control" rows="5"></textarea>
-                    </div>
-
-
-                </div>
-                <!-- /.box-body -->
-
-                <!-- /.box-footer -->
-
-            </div>
-            <!-- /.box -->
-        </div>
-        <div class="col-md-3"></div>
-    </div>
-    <div class="row">
-
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <!-- Horizontal Form -->
-            <div class="box box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Mission et activités</h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <!-- /.box-header -->
-                <!-- form start -->
-
-                <div class="box-body">
-
-
-                </div>
-                <!-- /.box-body -->
-
-                <!-- /.box-footer -->
-
-            </div>
-            <!-- /.box -->
-        </div>
-        <div class="col-md-3"></div>
+        <div class="col-md-2"></div>
     </div>
 
-    <div class="row">
 
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <!-- Horizontal Form -->
-            <div class="box box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Compétences</h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <!-- /.box-header -->
-                <!-- form start -->
-
-                <div class="box-body">
-
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <div class="form-group">
-                        <label>Titre</label>
-                        <input type="text"  name="name" class="form-control" v-model="position.name"  placeholder="Titre de la position">
-                    </div>
-                    <div class="form-group">
-                        <label>Localization</label>
-                        <v-select url="/api/select/locations" v-on:new_select="position.localization=arguments[0]"></v-select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Département</label>
-                        <v-select url="/api/select/departments" v-on:new_select="position.department=arguments[0]"></v-select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Fonction</label>
-                        <v-select url="/api/select/fonctions" v-on:new_select="position.fonction=arguments[0]"></v-select>
-                    </div>
-
-                    {{--
-                                            <div class="form-group">
-                                                <label>Statut</label>
-                                                <select name="position_status_id" id="position_status" style="width: 100%;"></select>
-                                            </div>--}}
-
-                </div>
-                <!-- /.box-body -->
-
-                <!-- /.box-footer -->
-
-            </div>
-            <!-- /.box -->
-        </div>
-        <div class="col-md-3"></div>
-    </div>
+        @include('utilities.modal_loading')
     </div>
 
 @endsection

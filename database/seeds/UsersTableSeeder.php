@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
 
         $user= new User();
         $user->name=$employee->firstName;
-        $user->email=$employee->email;
+        $user->email=$employee->business_email;
         $user->password=bcrypt('secret');
        
         $employee->user()->save($user);
@@ -27,7 +27,7 @@ class UsersTableSeeder extends Seeder
 
         $user= new User();
         $user->name=$employee->firstName;
-        $user->email=$employee->email;
+        $user->email=$employee->business_email;
         $user->password=bcrypt('secret');
 
 
@@ -38,7 +38,7 @@ class UsersTableSeeder extends Seeder
         $employee=Employee::where('employeeId','=','2046')->first();
         $user= new User();
         $user->name=$employee->firstName;
-        $user->email=$employee->email;
+        $user->email=$employee->business_email;
         $user->password=bcrypt('secret');
 
         $employee->user()->save($user);

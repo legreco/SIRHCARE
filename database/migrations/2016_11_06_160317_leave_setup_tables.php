@@ -55,7 +55,7 @@ class LeaveSetupTables extends Migration
 
         Schema::create('leave_requests', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->date('startDate');
+            $table->date('startDate')->nullable();
             $table->date('endDate')->nullable();
             $table->integer('duration');
             $table->string('comments')->nullable();

@@ -1,7 +1,7 @@
 <aside class="main-sidebar">
 
     <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar " >
+    <section class="sidebar" >
 
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
@@ -22,7 +22,7 @@
         <ul class="sidebar-menu">
             <li class="header">MENU</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="treeview ">
+           {{-- <li class="treeview ">
                 <a href="#">
                     <i class="fa  fa-home"></i>
                     <span>Accueil</span>
@@ -32,7 +32,7 @@
                     <li><a href="{{ url('/leaveRequest') }}"><i class="fa fa-circle-o"></i>Acceuil RH</a></li>
                     <li><a href="{{ url('/leaveRequest') }}"><i class="fa fa-circle-o"></i>Acceuil employé</a></li>
                 </ul>
-            </li>
+            </li>--}}
             @include('layouts.sidebar_menus.contracts')
             @include('layouts.sidebar_menus.recruitment')
 
@@ -40,7 +40,7 @@
 
             @include('layouts.sidebar_menus.payroll')
             @include('layouts.sidebar_menus.pars')
-            <li class="treeview ">
+         {{--   <li class="treeview ">
                 <a href="#">
                     <i class="fa  fa-sitemap"></i>
                     <span>Organigramme</span>
@@ -50,7 +50,7 @@
                     <li><a href="{{ url('/organization/chart') }}"><i class="fa fa-circle-o"></i>Structure</a></li>
                     <li><a href="{{ url('/departement/create') }}"><i class="fa fa-circle-o"></i>Département</a></li>
                 </ul>
-            </li>
+            </li>--}}
 
            @include('layouts.sidebar_menus.leave')
            @include('layouts.sidebar_menus.performance')
@@ -88,7 +88,7 @@
             </li>
 
 
-            <li class="treeview">
+        {{--    <li class="treeview">
                 <a href="#">
                     <i class="fa fa-home"></i> <span>Bureaux de CARE</span>
                     <i class="fa fa-angle-left pull-right"></i>
@@ -99,9 +99,9 @@
                     <li><a href="{{url('/permission')}}"><i class="fa fa-circle-o"></i>Permissions</a></li>
                     <li><a href="{{url('/role')}}"><i class="fa fa-circle-o"></i>Rôles</a></li>
                 </ul>
-            </li>
+            </li>--}}
 
-            <li class="treeview">
+          {{--  <li class="treeview">
                 <a href="#">
                     <i class="fa fa-home"></i> <span>Bureaux de CARE</span>
                     <i class="fa fa-angle-left pull-right"></i>
@@ -112,7 +112,7 @@
                     <li><a href="{{url('/permission')}}"><i class="fa fa-circle-o"></i>Permissions</a></li>
                     <li><a href="{{url('/role')}}"><i class="fa fa-circle-o"></i>Rôles</a></li>
                 </ul>
-            </li>
+            </li>--}}
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

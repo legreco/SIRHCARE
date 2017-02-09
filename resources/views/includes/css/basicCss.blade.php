@@ -1,6 +1,7 @@
 <!-- Bootstrap 3.3.2 -->
 <link href="{{ asset("/bower_components/AdminLTE/bootstrap/css/bootstrap.min.css") }}" rel="stylesheet" type="text/css" />
 <!-- Font Awesome Icons -->
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
 <link href="{{ asset("/bower_components/AdminLTE/font-awesome-4.6.3/css/font-awesome.min.css") }}" rel="stylesheet" type="text/css" />
 
 <!-- Ionicons -->

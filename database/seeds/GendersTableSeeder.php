@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\Gender;
 class GendersTableSeeder extends Seeder
 {
     /**
@@ -12,14 +12,16 @@ class GendersTableSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('genders')->insert([
-            'name' => 'Homme',
-            'code' =>'H',
-        ]);
-        //
-        DB::table('genders')->insert([
-            'name' => 'Femme',
-            'code' =>'F',
-        ]);
+        $gender=new Gender();
+        $gender->id='M';
+        $gender->name='Homme';
+        $gender->save();
+
+        $gender=new Gender();
+        $gender->id='F';
+        $gender->name='Femme';
+        $gender->save();
+        
+     
     }
 }

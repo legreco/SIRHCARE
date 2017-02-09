@@ -26,6 +26,13 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                         <div class="form-group">
+                            <label class="col-sm-4 control-label">Banque</label>
+                            <div class="col-sm-6">
+                                {{--   <v-select url="/api/select/currencies"></v-select>--}}
+                                <m-select url="/api/select/banks"></m-select>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-sm-4 control-label">Monnaie d'entrée</label>
                             <div class="col-sm-6">
                         {{--   <v-select url="/api/select/currencies"></v-select>--}}

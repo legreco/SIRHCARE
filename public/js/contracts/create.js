@@ -4,6 +4,17 @@ var create_contract_vm =new Vue({
 
     el:'#create_contract_vue',
     data:{
+        employee:{},
+        contract:{
+            'id':'',
+            'contract_type_id':'',
+            'salary':'',
+            'currency':'',
+            'startDate':'',
+            'endDate':'',
+            'employee':'',
+            'position':''
+        },
         trialPeriod:false,
         allocations:[],
         positions:[],

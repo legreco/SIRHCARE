@@ -9,33 +9,33 @@
 @section('content')
 
 <div class="row" id="leave_request_create_vue">
-    <div class="col-md-3">
+    <div class="col-md-2">
 
-        <div class="box box-solid">
-            <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa  fa-calendar-check-o"></i>Comptes congés</h3>
+        {{--  <div class="box box-solid">
+              <div class="box-header with-border">
+                  <h3 class="box-title"><i class="fa  fa-calendar-check-o"></i>Comptes congés</h3>
 
-                <div class="box-tools">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="box-body no-padding" style="display: block;">
-                <ul class="nav nav-pills nav-stacked">
+                  <div class="box-tools">
+                      <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                      </button>
+                  </div>
+              </div>
+              <div class="box-body no-padding" style="display: block;">
+                  <ul class="nav nav-pills nav-stacked">
 
-                    @foreach($leaveAccounts as $leaveAccount)
-                    <li><a href="#"> {{$leaveAccount->leaveName}}
-                            <span class="label label-primary pull-right">{{$leaveAccount->balance}}</span></a></li>
-                    @endforeach
-                </ul>
-            </div>
-            <!-- /.box-body -->
-        </div>
-        <!-- /. box -->
+                      @foreach($leaveAccounts as $leaveAccount)
+                      <li><a href="#"> {{$leaveAccount->leaveName}}
+                              <span class="label label-primary pull-right">{{$leaveAccount->balance}}</span></a></li>
+                      @endforeach
+                  </ul>
+              </div>
+              <!-- /.box-body -->
+          </div>
+          <!-- /. box -->
 
-        <!-- /.box -->
+          <!-- /.box -->--}}
     </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
         @include('errors.form_errors')
             <div class="box box-info">
                 <div class="box-header with-border">
@@ -43,14 +43,14 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form class="form-horizontal" method="post" action="/leaves/requests">
+                <form class="form-horizontal">
                     <div class="box-body">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
 
                                     <div class="form-group">
                                             <label class="col-sm-4 control-label">Type de congé</label>
-                                        <div class="col-sm-6">
-                                            <v-select url="/api/select/leave_types/active" v-on:new_select="leave_request.type=arguments[0]" ></v-select>
+                                        <div class="col-sm-8">
+                                            <m-select url="/api/select/leave_types" v-on:new_select="leave_request.leave_type_id=arguments[0].id" ></m-select>
                                         </div>
 
                                     </div>
@@ -58,10 +58,10 @@
 
                                     <div class="form-group">
                                             <label class="col-sm-4 control-label" >Nombre de jours</label>
-                                        <div class="col-sm-2">
+                                        <div class="col-sm-4">
                                         <input type="number" class="form-control"  v-model="leave_request.duration" min="1"  >
                                         </div>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-4">
 
                                         </div>
                                     </div>
@@ -112,7 +112,7 @@
                          <div class="form-group">
             <label class="col-sm-4 control-label">Commentaires</label>
                              <div class="col-sm-8">
-                                 <textarea rows="8" class="form-control"  name="comments" placeholder="Commentaires" ></textarea>
+                                 <textarea rows="8" class="form-control"  v-model="leave_request.comments" placeholder="Commentaires" ></textarea>
                              </div>
 
 
@@ -125,7 +125,7 @@
                         <div class="form-group">
                             <label class="col-sm-4 control-label" >Adresse</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control"  name="duration"  >
+                                <input type="text" class="form-control"   v-model="leave_request.address"  >
                             </div>
 
                         </div>
@@ -133,7 +133,7 @@
                         <div class="form-group">
                             <label class="col-sm-4 control-label" >Telephone</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control"  name="duration"  >
+                                <input type="text" class="form-control"  v-model="leave_request.telephone"  >
                             </div>
                             <div class="col-sm-4">
 
@@ -149,7 +149,7 @@
                     <div class="box-footer">
                         <div class="row">
                             <div class="col-md-4">
-                                <button class="btn btn-block btn-info" v-on:click="save"><i class="fa fa-floppy-o"></i> Sauvegarder</button>
+                                <button class="btn btn-block btn-info" v-on:click.prevent="save"><i class="fa fa-floppy-o"></i> Sauvegarder</button>
                             </div>
                             <div class="col-md-4">
 
@@ -166,7 +166,7 @@
             <!-- /.box -->
         @include('leave_requests.modal_calendar')
 </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
 
     </div>
 

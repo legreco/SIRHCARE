@@ -14,85 +14,52 @@
                 <div class="box-body">
 
 
-                    <table class="table table-hover ">
+                    <table class="table table-bordered table-hover" id="employees-table">
+                        <thead>
                         <tr>
-                            <th>CODE</th>
-                            <th>NOM</th>
-                            <th>PRÉNOM</th>
-                            <th>CATEGORIE</th>
-                            <th>SEXE</th>
-                            <th>POSTE</th>
-                            <th>SALAIRE (USD)</th>
-                            <th>DEPARTEMENT</th>
-                            <th>LOCALISATION</th>
-                           {{-- <th>POSTE</th>
-                            <th>DEPARTEMENT</th>
-                            <th>SALAIRE</th>--}}
-
-                            <th></th>
+                            <th>Statut</th>
+                            <th>Code</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <td>Sexe</td>
+                            <td>Cin Ou Nif</td>
+                            <td>Date naissance</td>
+                            <td>Poste</td>
+                            <td>Departement</td>
+                            <td>Location</td>
                         </tr>
-                        @foreach($employees as $employee)
-                            <tr>
-                                <td>
-                                    {{$employee->employeeId}}
-                                </td>
-                                <td>
-                                    {{$employee->firstName}}
-                                </td>
-                                <td>
-                                    {{$employee->lastName}}
-                                </td>
-                                <td>
+                        </thead>
 
-                                </td>
-                                <td>
-
-                                </td>
-
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                            {{--    <td>
-                                    {{$employee->contract->job->departement}}
-                                </td>
-                                <td>
-                                    @if (count($employee->contract))
-                                        {{$employee->contract->salary}}
-                                    @endif
-                                </td>
-                                <td>
-                                    @if (count($employee->employee))
-                                        {{$employee->employee->fullName}}
-                                    @endif
-
-                                </td>--}}
-
-
-
-                                <td>
-
-                                </td>
-                            </tr>
-                        @endforeach
 
                     </table>
 
                 </div><!-- /.box-body -->
-                <div class="box-footer">
-                    {{$employees->links()}}
-                </div>
+
             </div><!-- /.box -->
         </div><!-- /.col -->
         <div class='col-md-2'>
             </div>
     </div>
 @endsection
+@section('script')
+<script>
+
+    $(function() {
+        $('#employees-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '{!! url('/datatables/employees') !!}',
+            columns: [
+                { data: 'employee_status_id', name: 'employee_status_id' },
+                { data: 'employeeId', name: 'employeeId' },
+                { data: 'firstName', name: 'firstName' },
+                { data: 'lastName', name: 'lastName' },
+                { data: 'gender_id', name: 'gender_id' },
+                { data: 'cinOrNif', name: 'CinOrNif' },
+                { data: 'birthDate', name: 'birthDate' }
+            ]
+        });
+    });
+</script>
+
+    @stop

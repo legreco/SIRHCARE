@@ -86,11 +86,28 @@ Route::resource('countries','Web\CountryController');
 Route::resource('financial_data','Web\FinancialDataController');
 Route::resource('exchange_rates','Web\ExchangeRateController');
 Route::resource('notice_periods','Web\NoticePeriodController');
+Route::resource('evaluations','Web\EvaluationController');
+Route::get('/datatables/employees','Web\EmployeeController@employeesData');
 Route::get('/test', function()
 {
+    header('Content-type: application/pdf');
+    $pdf= new FPDI();
 
-  return  \App\Helpers\CalendarHelper::addBusinessDays('2017-01-03',5);
+// set the sourcefile
+    $pdf->setSourceFile(base_path().'/public/pdf/template.pdf');
+// import page 1
+    $tplIdx = $pdf->importPage(1);
+// use the imported page as the template
+    $pdf->AddPage();
+    $pdf->useTemplate($tplIdx, 0, 0);
 
+// now write some text above the imported page
+    $pdf->SetFont('Arial');
+    $pdf->SetTextColor(0,0,0);
+    $pdf->SetXY(25, 50);
+    $pdf->Write(0, "This is just a simple text");
+
+   $pdf->Output();
 
 });
 Route::resource('leaves/types','Web\LeaveTypeController');

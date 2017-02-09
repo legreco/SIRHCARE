@@ -1,6 +1,13 @@
 @extends('layouts.app')
 @section('content-header')
-    <h1>Mes évaluations <small></small></h1>
+    <h1>
+        Evaluations
+        <small>Evaluations 2017 </small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+    </ol>
 
 @endsection
 @section('content')
@@ -9,36 +16,46 @@
         </div>
         <div class='col-md-10'>
             <!-- Box -->
-            @include('includes.info.session_flash_status')
+
             <div class="box box-primary">
 
                 <div class="box-body">
 
 
-                    <table class="table table-hover">
+                    <table class="table table-bordered table-hover">
                         <tr>
-                            <th>ANNÉE</th>
-                            <th>JOURS FERIES</th>
+                            <th>NOM</th>
+                            <th>PRENOM</th>
+                            <th>SEXE</th>
+                            <th>POSTE</th>
+                            <th>SUPERVISEUR</th>
                             <th>STATUT</th>
-                            <th>CREE LE</th>
-                            <th>DERNIERE MODIFICATION</th>
+                            <th>ACTIONS</th>
                         </tr>
-                        @foreach($hLists as $hList)
+                        @foreach($employees as $employee)
                             <tr>
                                 <td>
-                                    {{$hList->calendarYear}}
+                                    {{$employee->firstName}}
+                                </td>
+                                <td>
+                                    {{$employee->lastName}}
+                                </td>
+                                <td>
+                                    {{$employee->gender_id}}
                                 </td>
                                 <td>
 
                                 </td>
                                 <td>
-                                    {{$hList->status}}
-                                </td>
-                                <td>
 
                                 </td>
                                 <td>
-                                    {{$hList->updated_at}}
+                                    <span><i class="fa fa-check fa-lg" style="color: green"></i> </span>
+                                </td>
+                                <td>
+                                    <div class="btn-group-xs">
+                                        <button class="btn btn-primary"><i class="fa fa-edit"></i> </button>
+                                    </div>
                                 </td>
                             </tr>
 
@@ -49,7 +66,7 @@
 
                 </div><!-- /.box-body -->
                 <div class="box-footer">
-
+                    {{$employees->links()}}
                 </div>
             </div><!-- /.box -->
 

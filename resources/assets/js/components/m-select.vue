@@ -43,7 +43,10 @@ export default {
     watch: {
     value: function(new_value)
     {
+    if(new_value!=null)
     this.$emit('new_value',new_value);
+    else
+     this.$emit('new_value',{});
     },
     reset: function(new_value){
     if(new_value)

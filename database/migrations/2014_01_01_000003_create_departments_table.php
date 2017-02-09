@@ -13,18 +13,20 @@ class CreateDepartmentsTable extends Migration
      */
     public function up()
     {Schema::create('departments', function (Blueprint $table) {
-        $table->increments('id');
-        $table->string('name',50);
-        $table->string('usualName',50);
-        $table->string('code',20)->unique();
-        $table->integer('department_id')->unsigned()->nullable();;
+        $table->string('id')->primary();
+        $table->string('name');
+        $table->string('usualName');
+        $table->boolean('isProject');
+        $table->string('department_id')->nullable();
         $table->timestamps();
         
-        $table->foreign('department_id')->references('id')->on('departments');
     });
 
-      
-      
+
+        Schema::table('departments', function (Blueprint $table) {
+
+            $table->foreign('department_id')->references('id')->on('departments')->onUpdate('cascade')->onDelete('cascade');
+        });
     }
 
     /**

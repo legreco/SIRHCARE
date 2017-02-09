@@ -19,6 +19,7 @@
                             <th>NOM DU POSTE</th>
                             <th>DEPARTEMENT</th>
                             <th>LOCATION</th>
+                            <th>OCCUPÉ PAR</th>
                             <th>DATE CREATION</th>
                             <th>ACTIONS</th>
                         </tr>
@@ -35,7 +36,7 @@
                                     {{$position->department->usualName}}
                                 </td>
                                 <td>
-                                    {{$position->location->code}}
+                                    {{$position->location->name}}
                                 </td>
 
                                 <td>

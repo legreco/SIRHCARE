@@ -14,5 +14,6 @@
 
 <script src="{{asset("/bower_components/moment/moment.js") }}" type="text/javascript"></script>
 <script src="{{asset("/bower_components/moment/locale/fr.js") }}" type="text/javascript"></script>
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 
 

@@ -5,9 +5,9 @@
         <i class="fa fa-angle-left pull-right"></i>
     </a>
     <ul class="treeview-menu">
-        <li><a href="{{ url('/employees/create') }}"><i class="fa fa-circle-o"></i>Masse salariale</a></li>
-        <li><a href="{{ url('/employees') }}"><i class="fa fa-circle-o"></i>Répartition des genres</a></li>
+        <li><a href="{{ url('/contracts/create') }}"><i class="fa fa-circle-o"></i>Nouveau contrat</a></li>
+      {{--  <li><a href="{{ url('/employees') }}"><i class="fa fa-circle-o"></i>Répartition des genres</a></li>
         <li><a href="{{ url('/employees') }}"><i class="fa fa-circle-o"></i>Effectif</a></li>
-        <li><a href="{{ url('/employees') }}"><i class="fa fa-circle-o"></i>Moyenne d'âge</a></li>
+        <li><a href="{{ url('/employees') }}"><i class="fa fa-circle-o"></i>Moyenne d'âge</a></li>--}}
     </ul>
 </li>
